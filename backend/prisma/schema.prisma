@@ -30,6 +30,24 @@ model Location {
   @@map("location")
 }
 
+model Banner {
+  id           String    @id @default(uuid())
+  linck String
+  create_at    DateTime? @default(now())
+  updated_at   DateTime? @default(now())
+
+  @@map("banner")
+}
+
+model Logo {
+  id           String    @id @default(uuid())
+  linck String
+  create_at    DateTime? @default(now())
+  updated_at   DateTime? @default(now())
+
+  @@map("logo")
+}
+
 model Contacts {
   id         String    @id @default(uuid())
   name       String
