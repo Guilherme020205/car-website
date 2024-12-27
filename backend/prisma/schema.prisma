@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  userName String @unique
+  password String
+
+  @@map("users")
+}
+
+model Location {
+  id           String    @id @default(uuid())
+  locationName String
+  create_at    DateTime? @default(now())
+  updated_at   DateTime? @default(now())
+
+  @@map("location")
+}
+
+model Contacts {
+  id         String    @id @default(uuid())
+  name       String
+  number     String
+  create_at  DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("contacts")
+}
+
+model SocialNetworks {
+  id    String @id @default(uuid())
+  linck String
+
+  type       TypesSocialNetworks @relation(fields: [type_id], references: [id])
+  type_id    String              @unique
+  create_at  DateTime?           @default(now())
+  updated_at DateTime?           @default(now())
+
+  @@map("socialNetworks")
+}
+
+model TypesSocialNetworks {
+  id             String           @id @default(uuid())
+  name           String           @unique
+  banner         String
+  create_at      DateTime?        @default(now())
+  updated_at     DateTime?        @default(now())
+  SocialNetworks SocialNetworks[]
+}
+
+model Vehicles {
+  id    String @id @default(uuid())
+  model String
+
+  mark    Marks  @relation(fields: [mark_id], references: [id])
+  mark_id String
+
+  exchange    Exchanges @relation(fields: [exchange_id], references: [id])
+  exchange_id String
+
+  fuel    Fuels  @relation(fields: [fuel_id], references: [id])
+  fuel_id String
+
+  bodyWork    BodyWorks @relation(fields: [bodyWork_id], references: [id])
+  bodyWork_id String
+
+  km    Int
+  year  String
+  price Int
+
+  description    Descripitons @relation(fields: [description_id], references: [id])
+  description_id String       @unique
+
+  baner1     String
+  baner2     String
+  baner3     String
+  baner4     String
+  baner5     String
+  create_at  DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("vehicles")
+}
+
+model Marks {
+  id       String     @id @default(uuid())
+  name     String     @unique
+  banner   String
+  Vehicles Vehicles[]
+
+  @@map("marks")
+}
+
+model Exchanges {
+  id       String     @id @default(uuid())
+  name     String
+  Vehicles Vehicles[]
+
+  @@map("exchanges")
+}
+
+model Fuels {
+  id       String     @id @default(uuid())
+  name     String
+  Vehicles Vehicles[]
+
+  @@map("fuels")
+}
+
+model BodyWorks {
+  id       String     @id @default(uuid())
+  name     String
+  Vehicles Vehicles[]
+
+  @@map("bodyworks")
+}
+
+model Descripitons {
+  id          String    @id @default(uuid())
+  description String
+  Vehicles    Vehicles?
+
+  @@map("descriptions")
+}
