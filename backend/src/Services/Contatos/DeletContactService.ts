@@ -1,7 +1,7 @@
 import prismaClient from "../../prisma";
 
 export async function DeletContactService(idContact: string) {
-    const deletedContact  = prismaClient.contacts.delete({
+    const deletedContact  = await prismaClient.contacts.delete({
       where: {
         id: idContact
       }
