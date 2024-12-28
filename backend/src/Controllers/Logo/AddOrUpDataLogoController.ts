@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AddOrUpDateLogoService } from "../../Services/Logo/AddOrUpDateLogoService";
+import { AddOrUpDateLogoService } from "../../Services/Logo/AddOrUpDataLogoService";
 
 export async function AddOrUpDateLogoController(req: Request, res: Response) {
     try {

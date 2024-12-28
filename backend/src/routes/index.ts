@@ -9,8 +9,9 @@ import { DeletContactController } from "../Controllers/Contatos/DeletContactCont
 import { CreatRedeController } from "../Controllers/Redes/CreatRedeController";
 import { ListRedeController } from "../Controllers/Redes/ListRedeController";
 import { DeletRedeController } from "../Controllers/Redes/DeletRedeController";
-import { addOrUpdateBannerController } from "../Controllers/Banner/AddOrUpDateBannerController";
-import { AddOrUpDateLogoController } from "../Controllers/Logo/AddOrUpDateLogoController";
+import { addOrUpdateBannerController } from "../Controllers/Banner/AddOrUpDataBannerController";
+import { AddOrUpDateLogoController } from "../Controllers/Logo/AddOrUpDataLogoController";
+import { AddOrUpDateLocationController } from "../Controllers/Location/AddOrUpDateLocationController";
 
 const router = Router();
 
@@ -27,5 +28,7 @@ router.delete('/rede/remove', DeletRedeController);
 router.post('/banner', addOrUpdateBannerController);
 
 router.post('/logo', AddOrUpDateLogoController);
+
+router.post('/location', AddOrUpDateLocationController);
 
 export default router;

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { addOrUpdateBanner } from '../../Services/Banner/AddOrUpDateBannerService';
+import { addOrUpdateBanner } from '../../Services/Banner/AddOrUpDataBannerService';
 
 // Endpoint para adicionar ou substituir o banner
 export async function addOrUpdateBannerController(req: Request, res: Response) {
