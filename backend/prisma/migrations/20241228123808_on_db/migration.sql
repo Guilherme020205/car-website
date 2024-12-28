@@ -18,6 +18,26 @@ CREATE TABLE "location" (
 );
 
 -- CreateTable
+CREATE TABLE "banner" (
+    "id" TEXT NOT NULL,
+    "linck" TEXT NOT NULL,
+    "create_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "banner_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "logo" (
+    "id" TEXT NOT NULL,
+    "linck" TEXT NOT NULL,
+    "create_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "logo_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "contacts" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -128,6 +148,15 @@ CREATE UNIQUE INDEX "vehicles_description_id_key" ON "vehicles"("description_id"
 
 -- CreateIndex
 CREATE UNIQUE INDEX "marks_name_key" ON "marks"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "exchanges_name_key" ON "exchanges"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "fuels_name_key" ON "fuels"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "bodyworks_name_key" ON "bodyworks"("name");
 
 -- AddForeignKey
 ALTER TABLE "socialNetworks" ADD CONSTRAINT "socialNetworks_type_id_fkey" FOREIGN KEY ("type_id") REFERENCES "TypesSocialNetworks"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

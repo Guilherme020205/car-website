@@ -31,19 +31,19 @@ model Location {
 }
 
 model Banner {
-  id           String    @id @default(uuid())
-  linck String
-  create_at    DateTime? @default(now())
-  updated_at   DateTime? @default(now())
+  id         String    @id @default(uuid())
+  linck      String
+  create_at  DateTime? @default(now())
+  updated_at DateTime? @default(now())
 
   @@map("banner")
 }
 
 model Logo {
-  id           String    @id @default(uuid())
-  linck String
-  create_at    DateTime? @default(now())
-  updated_at   DateTime? @default(now())
+  id         String    @id @default(uuid())
+  linck      String
+  create_at  DateTime? @default(now())
+  updated_at DateTime? @default(now())
 
   @@map("logo")
 }
@@ -122,25 +122,25 @@ model Marks {
   @@map("marks")
 }
 
-model Exchanges {
+model Exchanges { //cambio
   id       String     @id @default(uuid())
-  name     String
+  name     String     @unique
   Vehicles Vehicles[]
 
   @@map("exchanges")
 }
 
-model Fuels {
+model Fuels { 
   id       String     @id @default(uuid())
-  name     String
+  name     String     @unique
   Vehicles Vehicles[]
 
   @@map("fuels")
 }
 
-model BodyWorks {
+model BodyWorks { // carroceria 
   id       String     @id @default(uuid())
-  name     String
+  name     String     @unique
   Vehicles Vehicles[]
 
   @@map("bodyworks")

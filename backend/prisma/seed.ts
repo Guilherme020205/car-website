@@ -133,6 +133,49 @@ async function main() {
         });
     }
 
+    // Fazer o seed dos fuels
+
+    const Creatfuels = [
+        { name: "Gasolina" },
+        { name: "Flex" },
+        { name: "Diesel" },
+        { name: "Eletrico" }
+    ]
+
+    for (const fuel of Creatfuels)
+        await prismaClient.fuels.upsert({
+            where: { name: fuel.name },
+            create: fuel,
+            update: {}
+
+        })
+
+    const CreatExchanges = [
+        { name: "Manual" },
+        { name: "Automático" },
+    ]
+
+    for (const exchang of CreatExchanges)
+        await prismaClient.exchanges.upsert({
+            where:{name: exchang.name},
+            create: exchang,
+            update: {}
+        })
+
+    const CreatBodyWorks = [
+        { name: "SUV"},
+        { name: "Sedã"},
+        { name: "4x4"},
+        { name: "Scooter"},
+    ]
+
+    for (const bodyWorks of CreatBodyWorks)
+        await prismaClient.bodyWorks.upsert({
+            where: {name: bodyWorks.name},
+            create: bodyWorks,
+            update: {}
+        })
+
     const passwordHash = await hash("1", 8);
 
     await prismaClient.user.upsert({
