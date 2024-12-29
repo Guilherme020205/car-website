@@ -1,4 +1,7 @@
 import { Router } from "express";
+import multer from "multer";
+
+import uploadConfig from "../config/multer";
 
 import { LoginUserController } from "../Controllers/User/LoginUserController";
 
@@ -15,6 +18,8 @@ import { AddOrUpDateLocationController } from "../Controllers/Location/AddOrUpDa
 
 const router = Router();
 
+const upload = multer(uploadConfig.upload("./tmp"))
+
 router.post('/login', LoginUserController);
 
 router.post('/contact/creat', CreatContactController);
@@ -25,7 +30,7 @@ router.post('/rede/creat', CreatRedeController);
 router.get('/rede/list', ListRedeController);
 router.delete('/rede/remove', DeletRedeController);
 
-router.post('/banner', addOrUpdateBannerController);
+router.post('/banner', upload.single('linck'), addOrUpdateBannerController);
 
 router.post('/logo', AddOrUpDateLogoController);
 
