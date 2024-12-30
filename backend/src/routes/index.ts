@@ -30,7 +30,8 @@ router.post('/rede/creat', CreatRedeController);
 router.get('/rede/list', ListRedeController);
 router.delete('/rede/remove', DeletRedeController);
 
-router.post('/banner', upload.single('linck'), addOrUpdateBannerController);
+// router.post('/banner', upload.single('linck'), addOrUpdateBannerController);
+router.post('/banner', addOrUpdateBannerController);
 
 router.post('/logo', AddOrUpDateLogoController);
 
