@@ -16,6 +16,8 @@ import { addOrUpdateBannerController } from "../Controllers/Banner/AddOrUpDataBa
 import { AddOrUpDateLogoController } from "../Controllers/Logo/AddOrUpDataLogoController";
 import { AddOrUpDateLocationController } from "../Controllers/Location/AddOrUpDateLocationController";
 
+import { CreatVehicleController } from "../Controllers/Vehicle/CreatVehicleController";
+
 const router = Router();
 
 const upload = multer(uploadConfig.upload("./tmp"))
@@ -36,5 +38,7 @@ router.post('/banner', addOrUpdateBannerController);
 router.post('/logo', AddOrUpDateLogoController);
 
 router.post('/location', AddOrUpDateLocationController);
+
+router.post('/vehicle', CreatVehicleController);
 
 export default router;
