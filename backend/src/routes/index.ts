@@ -17,6 +17,7 @@ import { AddOrUpDateLogoController } from "../Controllers/Logo/AddOrUpDataLogoCo
 import { AddOrUpDateLocationController } from "../Controllers/Location/AddOrUpDateLocationController";
 
 import { CreatVehicleController } from "../Controllers/Vehicle/CreatVehicleController";
+import { SearchController } from "../Controllers/Search/SearchController";
 
 const router = Router();
 
@@ -40,5 +41,8 @@ router.post('/logo', AddOrUpDateLogoController);
 router.post('/location', AddOrUpDateLocationController);
 
 router.post('/vehicle', CreatVehicleController);
+
+router.get('/search', SearchController);
+
 
 export default router;
