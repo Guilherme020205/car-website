@@ -19,6 +19,7 @@ import { AddOrUpDateLocationController } from "../Controllers/Location/AddOrUpDa
 import { CreatVehicleController } from "../Controllers/Vehicle/CreatVehicleController";
 import { SearchController } from "../Controllers/Search/SearchController";
 import { ViewBannerController } from "../Controllers/Banner/ViewBannerController";
+import { ViewLocationController } from "../Controllers/Location/ViewLocationController";
 
 const router = Router();
 
@@ -41,6 +42,7 @@ router.get('/banner', ViewBannerController);
 router.post('/logo', AddOrUpDateLogoController);
 
 router.post('/location', AddOrUpDateLocationController);
+router.get('/location', ViewLocationController);
 
 router.post('/vehicle', CreatVehicleController);
 
