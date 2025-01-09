@@ -20,6 +20,7 @@ import { CreatVehicleController } from "../Controllers/Vehicle/CreatVehicleContr
 import { SearchController } from "../Controllers/Search/SearchController";
 import { ViewBannerController } from "../Controllers/Banner/ViewBannerController";
 import { ViewLocationController } from "../Controllers/Location/ViewLocationController";
+import { ViewLogoController } from "../Controllers/Logo/ViewLogoController";
 
 const router = Router();
 
@@ -40,6 +41,7 @@ router.post('/banner', addOrUpdateBannerController);
 router.get('/banner', ViewBannerController);
 
 router.post('/logo', AddOrUpDateLogoController);
+router.get('/logo', ViewLogoController);
 
 router.post('/location', AddOrUpDateLocationController);
 router.get('/location', ViewLocationController);
