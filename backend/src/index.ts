@@ -2,10 +2,10 @@ import  express, { json } from "express";
 import router from './routes/index';
 import path from "path";
 import fileUpload from "express-fileupload";
-
+import cors from "cors"
 
 const app = express()
-
+app.use(cors())
 app.use(json())
 
 app.use(fileUpload({
