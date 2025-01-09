@@ -18,6 +18,7 @@ import { AddOrUpDateLocationController } from "../Controllers/Location/AddOrUpDa
 
 import { CreatVehicleController } from "../Controllers/Vehicle/CreatVehicleController";
 import { SearchController } from "../Controllers/Search/SearchController";
+import { ViewBannerController } from "../Controllers/Banner/ViewBannerController";
 
 const router = Router();
 
@@ -35,6 +36,7 @@ router.delete('/rede/remove', DeletRedeController);
 
 // router.post('/banner', upload.single('linck'), addOrUpdateBannerController);
 router.post('/banner', addOrUpdateBannerController);
+router.get('/banner', ViewBannerController);
 
 router.post('/logo', AddOrUpDateLogoController);
 
