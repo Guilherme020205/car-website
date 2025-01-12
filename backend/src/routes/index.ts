@@ -22,6 +22,8 @@ import { ViewBannerController } from "../Controllers/Banner/ViewBannerController
 import { ViewLocationController } from "../Controllers/Location/ViewLocationController";
 import { ViewLogoController } from "../Controllers/Logo/ViewLogoController";
 
+import { ListTypeRedeController } from "../Controllers/TypeRedes/ListTypeRedeController";
+
 const router = Router();
 
 const upload = multer(uploadConfig.upload("./tmp"))
@@ -35,6 +37,8 @@ router.delete('/contact/remove', DeletContactController);
 router.post('/rede/creat', CreatRedeController);
 router.get('/rede/list', ListRedeController);
 router.delete('/rede/remove', DeletRedeController);
+
+router.get('/typerede/list', ListTypeRedeController);
 
 // router.post('/banner', upload.single('linck'), addOrUpdateBannerController);
 router.post('/banner', addOrUpdateBannerController);

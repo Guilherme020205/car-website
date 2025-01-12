@@ -14,22 +14,23 @@ export default function Home() {
                 console.log(response.data); // Resposta do db
                 if (response.data && response.data.length > 0) {
                     setBanner(response.data[0]);  // Pega o primeiro item do array
-                }  
+                }
             } catch (error) {
                 console.error('Error fetching banner:', error);
             }
         }
 
         fetchBanner();
-    }, []);
-
+    }, []); 
+    
     return (
-        <div>
+        <div className="background-home min-h-screen max-h-[800px] flex items-center justify-center mb-7">
             {banner && banner.linck ? (
                 <Image
                     src={banner.linck}
                     width={1000}
-                    height={1000}
+                    height={400}
+                    className="object-cover max-h-[400px] max-w-[1000px] rounded-md"
                     alt="Image banner"
                 />
             ) : (
