@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/input": "^2.4.9",
+    "@heroui/system": "^2.4.6",
+    "@heroui/theme": "^2.4.5",
     "axios": "^1.7.9",
+    "framer-motion": "^11.18.1",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

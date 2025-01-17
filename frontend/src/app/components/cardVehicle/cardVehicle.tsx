@@ -1,15 +1,11 @@
 "use client"
 import Image from "next/image"
-import { useState } from "react"
 
-export function CardVehicle() {
+export function CardVehicle(
+    { imgVeihcle, logoVeihcle, nameVeihcle, kmVeihcle, yearVeihcle, priceVeihcle }:
+        { imgVeihcle: string; logoVeihcle: string; nameVeihcle: string; kmVeihcle: string; yearVeihcle: string; priceVeihcle: string; }
+) {
 
-    const [imgVeihcle, setImgVeihcle] = useState('https://cronos.fiat.com.br/images/Gallery/cronos-precision-design-lateral@3x.webp')
-    const [logoVeihcle, setLogoVeihcle] = useState('https://logodownload.org/wp-content/uploads/2014/05/fiat-logo-2.png')
-    const [nameVeihcle, setNameVeihcle] = useState('Cronos')
-    const [kmVeihcle, setKmVeihcle] = useState('0')
-    const [yearVeihcle, setYearVeihcle] = useState('2024/2025')
-    const [priceVeihcle, setPriceVeihcle] = useState('53.900')
 
     return (
         <div className="flex flex-col bg-gray-200 w-[200px] h-[100%] rounded-md gap-2">
