@@ -109,7 +109,7 @@ async function main() {
     const typesSocial = [
         {
             name: "Instagram",
-            banner: "https://logodownload.org/wp-content/uploads/2017/04/instagram-logo-18.png"
+            banner: "https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png"
         },
         {
             name: "Twitter",
@@ -117,12 +117,8 @@ async function main() {
         },
         {
             name: "Telegram",
-            banner: "https://logodownload.org/wp-content/uploads/2017/11/telegram-logo-0-2-1536x1536.png"
-        },
-        {
-            name: "Gmail",
-            banner: "https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-16-1536x1152.png"
-        },
+            banner: "https://logodownload.org/wp-content/uploads/2017/11/telegram-logo-9.png"
+        }
     ];
 
     for (const type of typesSocial) {

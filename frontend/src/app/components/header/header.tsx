@@ -3,6 +3,7 @@ import { api } from "@/services/api"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from 'react';
+import FunctionfetchLogo from "../functions/getLogo";
 
 export function Header() {
 
@@ -11,10 +12,14 @@ export function Header() {
     useEffect(() => {
         async function fetchLogo() {
             try {
-                const response = await api.get('/logo')
-                console.log(response.data)
-                if(response.data && response.data.length > 0){
-                    setLogoWeb(response.data[0])
+                // const response = await api.get('/logo')
+                // console.log(response.data)
+                // if(response.data && response.data.length > 0){
+                //     setLogoWeb(response.data[0])
+                // }
+                const logo = await FunctionfetchLogo();
+                if(logo){
+                    setLogoWeb(logo)
                 }
             } catch (error) {
                 console.log(error)
@@ -44,10 +49,10 @@ export function Header() {
 
 
             <div className="flex flex-row mx-36 gap-36">
-                <Link href='/'>Home</Link>
+                <Link href='/' className='hover:destacText2 '>Home</Link>
                 <div className="flex flex-row gap-10">
-                    <Link href="contact">Contatos</Link>
-                    <Link href="location">Localização</Link>
+                    <Link href="contact" className='hover:destacText2 '>Contatos</Link>
+                    <Link href="location" className='hover:destacText2 '>Localização</Link>
                 </div>
             </div>
         </header>

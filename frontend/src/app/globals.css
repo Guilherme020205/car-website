@@ -21,8 +21,17 @@ body {
 }
 
 @layer utilities {
-  .background-home {
-    @apply bg-stone-800; /* substitui #3c3c3c por uma cor Tailwind próxima */
+  .background-web {
+    @apply bg-gray-950; /* substitui #3c3c3c por uma cor Tailwind próxima */
     background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  }
+  .destacText {
+    @apply text-yellow-100;
+    text-decoration: underline;
+  }
+  .destacText2 {
+    @apply text-gray-800;
+    text-decoration: underline;
+     border-radius: 5%;  
   }
 }

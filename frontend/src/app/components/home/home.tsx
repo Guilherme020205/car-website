@@ -11,7 +11,7 @@ export default function Home() {
         async function fetchBanner() {
             try {
                 const response = await api.get('/banner');
-                console.log(response.data); // Resposta do db
+                //console.log(response.data); // Resposta do db
                 if (response.data && response.data.length > 0) {
                     setBanner(response.data[0]);  // Pega o primeiro item do array
                 }
@@ -24,7 +24,7 @@ export default function Home() {
     }, []); 
     
     return (
-        <div className="background-home min-h-screen max-h-[800px] flex items-center justify-center mb-7">
+        <div className="background-web min-h-screen max-h-[800px] flex items-center justify-center mb-7">
             {banner && banner.linck ? (
                 <Image
                     src={banner.linck}
