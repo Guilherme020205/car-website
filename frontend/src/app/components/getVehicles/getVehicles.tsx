@@ -1,6 +1,6 @@
 "use client"
 import { api } from "@/services/api";
-import { CardVehicle } from './../cardVehicle/cardVehicle';
+import { CardVehicle } from './cardVehicle/cardVehicle';
 import { useEffect, useState } from "react";
 import { Fltro } from './../filtro/filtro';
 
