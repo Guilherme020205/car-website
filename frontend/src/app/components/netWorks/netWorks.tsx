@@ -78,7 +78,7 @@ export default function etWorks() {
                         ))}
                     </ul>
                 ) : (
-                    <p>No networks...</p>
+                    <p className='text-red-700'>No networks...</p>
                 )}
 
 

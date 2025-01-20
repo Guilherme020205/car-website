@@ -34,7 +34,7 @@ export default function Home() {
                     alt="Image banner"
                 />
             ) : (
-                <p>Loading banner...</p>
+                <p className='text-red-700'>Loading banner...</p>
             )}
         </div>
     );

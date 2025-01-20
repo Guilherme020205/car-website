@@ -24,6 +24,10 @@ import { ViewLogoController } from "../Controllers/Logo/ViewLogoController";
 
 import { ListTypeRedeController } from "../Controllers/TypeRedes/ListTypeRedeController";
 
+import { ListFuelsTypeController } from "../Controllers/fuels/ListFuelsTypeController";
+import { ListExchangesTypeController } from "../Controllers/exchanges/ListExchangesTypeController";
+import { ListBodyworksTypeController } from "../Controllers/bodyworks/ListFuelsTypeController";
+
 const router = Router();
 
 const upload = multer(uploadConfig.upload("./tmp"))
@@ -54,5 +58,8 @@ router.post('/vehicle', CreatVehicleController);
 
 router.get('/search', SearchController);
 
+router.get('/fuels', ListFuelsTypeController);
+router.get('/bodyworks', ListBodyworksTypeController);
+router.get('/exchanges', ListExchangesTypeController);
 
 export default router;

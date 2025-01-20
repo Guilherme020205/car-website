@@ -100,7 +100,7 @@ export default function Contacts() {
                         ))}
                     </ul>
                 ) : (
-                    <p>No networks...</p>
+                    <p className='text-red-700'>No networks...</p>
                 )}
 
 
@@ -131,7 +131,7 @@ export default function Contacts() {
                         ))}
                     </ul>
                 ) : (
-                    <p>No contacts...</p>
+                    <p className='text-red-700'>No contacts...</p>
                 )}
             </div>
 

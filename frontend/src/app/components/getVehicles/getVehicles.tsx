@@ -16,7 +16,7 @@ export default function Vehicles() {
     return (
         <div className="flex flex-col gap-10">
             <Fltro></Fltro>
-            <div className="w-screen grid grid-cols-5 gap-4 justify-between">
+             <div className="w-screen grid grid-cols-5 gap-4 justify-between">
                 {[...Array(20)].map((_, index) => (
                     <div key={index}>
                         <CardVehicle

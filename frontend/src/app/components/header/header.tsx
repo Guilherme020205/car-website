@@ -44,7 +44,7 @@ export function Header() {
                 className="object-cover max-w-[300px] max-h-[70px] "
                 />
             ): (
-                <p>Loading logo</p>
+                <p className='text-red-700'>Loading logo...</p>
             )}
 
 

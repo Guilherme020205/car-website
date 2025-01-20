@@ -41,7 +41,7 @@ export function Footer() {
                         className="object-cover max-w-[200px] max-h-[70px] rounded-md"
                     />
                 ) : (
-                    <p>Loading logo</p>
+                    <p className='text-red-700'>Loading logo...</p>
                 )}
 
 
