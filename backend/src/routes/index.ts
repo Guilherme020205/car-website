@@ -56,7 +56,7 @@ router.get('/location', ViewLocationController);
 
 router.post('/vehicle', CreatVehicleController);
 
-router.get('/search', SearchController);
+router.post('/search', SearchController);
 
 router.get('/fuels', ListFuelsTypeController);
 router.get('/bodyworks', ListBodyworksTypeController);

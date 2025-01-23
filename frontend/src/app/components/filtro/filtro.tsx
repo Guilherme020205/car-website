@@ -32,11 +32,11 @@ export function Fltro() {
                             </div>
 
                             <div>
-                                <p className="font-bold text-[15px]">Câmbio</p>
+                                <p className="font-bold text-[15px]">Carroceria</p>
                                 <ListTypes nameType="bodyworks"></ListTypes>
                             </div>
                             <div>
-                                <p className="font-bold text-[15px]">Carroceria</p>
+                                <p className="font-bold text-[15px]">Câmbio</p>
                                 <ListTypes nameType="exchanges"></ListTypes>
                             </div>
                         </div>
