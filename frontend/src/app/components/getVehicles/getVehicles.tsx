@@ -1,7 +1,7 @@
 "use client"
 import { api } from "@/services/api";
 import { CardVehicle } from './cardVehicle/cardVehicle';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Fltro } from './../filtro/filtro';
 
 interface Vehicles {
@@ -53,6 +53,9 @@ export default function Vehicles() {
     const [maxVehicles, setMaxVehicles] = useState(valueChangeMinOrMaxVehicle)
     const [minVehicles, setMinVehicles] = useState(0)
 
+    // Referência para o div-base
+    const divBaseRef = useRef<HTMLDivElement | null>(null);
+
     useEffect(() => {
         async function listVehicle() {
             try {
@@ -67,11 +70,24 @@ export default function Vehicles() {
         listVehicle()
     }, []);
 
+    // Função para rolar até o div-base
+    const scrollToDivBase = () => {
+        if (divBaseRef.current) {
+            divBaseRef.current.scrollIntoView({
+                behavior: "auto",
+                block: "start"
+            });
+        }
+    };
+
     async function changeMinVehicle() {
         const novoValorMinimo = (minVehicles - valueChangeMinOrMaxVehicle)
         setMinVehicles(novoValorMinimo)
         const novoValorMaximo = (maxVehicles - valueChangeMinOrMaxVehicle)
         setMaxVehicles(novoValorMaximo)
+
+        // Rolar até o div-base após a alteração
+        scrollToDivBase();
     }
 
     async function changeMaxVehicle() {
@@ -79,13 +95,16 @@ export default function Vehicles() {
         setMinVehicles(novoValorMinimo)
         const novoValorMaximo = (maxVehicles + valueChangeMinOrMaxVehicle)
         setMaxVehicles(novoValorMaximo)
+
+        // Rolar até o div-base após a alteração
+        scrollToDivBase();
     }
 
     return (
         <div className="flex flex-col gap-10">
             <Fltro></Fltro>
             <div>
-                <div id="div-base">
+                <div ref={divBaseRef} id="div-base" className="h-1">
                     {/* Esse fica sem nada dentro mesmo serve para direcionar após paginar a tela*/}
                 </div>
                 {vehicles.length > 0 ? (
@@ -127,7 +146,6 @@ export default function Vehicles() {
                     >
                         Avançar
                     </button>
-
                 </div>
             </div>
 
