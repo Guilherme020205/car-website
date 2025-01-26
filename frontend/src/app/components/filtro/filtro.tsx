@@ -3,7 +3,7 @@ import { IoIosSearch } from "react-icons/io";
 import { ListTypes } from './listTypes/listTypes';
 import { useState } from "react";
 
-export function Fltro({ applyFilters }: { applyFilters: (filters: any) => void }) {
+export function Filtro() {
 
     const [searchValue, setSearchValue] = useState('')
     const [valueMaxVeihcle, setValueMaxVeihcle] = useState('')
