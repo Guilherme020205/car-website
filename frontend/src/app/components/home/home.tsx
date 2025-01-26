@@ -34,7 +34,7 @@ export default function Home() {
                     alt="Image banner"
                 />
             ) : (
-                <p className='text-red-700'>Loading banner...</p>
+                <p className='text-gray-500 select-none'>carregando...</p>
             )}
         </div>
     );

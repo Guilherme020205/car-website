@@ -45,111 +45,77 @@ interface Vehicles {
     };
 }
 
-
 export default function Vehicles() {
+    const [vehicles, setVehicles] = useState<Vehicles[]>([]);
+    const valueChangeMinOrMaxVehicle = 20;
+    const [maxVehicles, setMaxVehicles] = useState(valueChangeMinOrMaxVehicle);
+    const [minVehicles, setMinVehicles] = useState(0);
+    const divBaseRef = useRef<HTMLDivElement | null>(null);
 
-    const [vehicles, setVehicles] = useState<Vehicles[]>([])
-
-    const valueChangeMinOrMaxVehicle = 20
-    const [maxVehicles, setMaxVehicles] = useState(valueChangeMinOrMaxVehicle)
-    const [minVehicles, setMinVehicles] = useState(0)
-
-    // Referência para o div-base
-    const divBaseRef = useRef<HTMLDivElement | null>(null);     
-
-    useEffect(() => {
-        
-        async function listVehicle() {
+    async function fetchVehicles(filters = {}) {
         try {
-            const response = await api.post("/search");
-            console.log(response.data);
+            const response = await api.post("/search", filters);
             setVehicles(response.data);
         } catch (error) {
-            console.log(error);
+            console.error("Erro ao buscar veículos:", error);
         }
     }
-        listVehicle()
+
+    useEffect(() => {
+        fetchVehicles();
     }, []);
 
-    // Função para rolar até o div-base
     const scrollToDivBase = () => {
         if (divBaseRef.current) {
-            divBaseRef.current.scrollIntoView({
-                behavior: "auto",
-                block: "start"
-            });
+            divBaseRef.current.scrollIntoView({ behavior: "auto", block: "start" });
         }
     };
 
-    async function changeMinVehicle() {
-        const novoValorMinimo = (minVehicles - valueChangeMinOrMaxVehicle)
-        setMinVehicles(novoValorMinimo)
-        const novoValorMaximo = (maxVehicles - valueChangeMinOrMaxVehicle)
-        setMaxVehicles(novoValorMaximo)
-
-        // Rolar até o div-base após a alteração
+    function changeMinVehicle() {
+        setMinVehicles(minVehicles - valueChangeMinOrMaxVehicle);
+        setMaxVehicles(maxVehicles - valueChangeMinOrMaxVehicle);
         scrollToDivBase();
     }
 
-    async function changeMaxVehicle() {
-        const novoValorMinimo = (minVehicles + valueChangeMinOrMaxVehicle)
-        setMinVehicles(novoValorMinimo)
-        const novoValorMaximo = (maxVehicles + valueChangeMinOrMaxVehicle)
-        setMaxVehicles(novoValorMaximo)
-
-        // Rolar até o div-base após a alteração
+    function changeMaxVehicle() {
+        setMinVehicles(minVehicles + valueChangeMinOrMaxVehicle);
+        setMaxVehicles(maxVehicles + valueChangeMinOrMaxVehicle);
         scrollToDivBase();
     }
 
     return (
         <div className="flex flex-col gap-10">
-            <Filtro></Filtro>
+            <Filtro onUpdatePreferences={fetchVehicles} />
             <div>
-                <div ref={divBaseRef} className="h-1">
-                    {/* Esse fica sem nada dentro mesmo serve para direcionar após paginar a tela*/}
-                </div>
+                <div ref={divBaseRef} className="h-1"></div>
                 {vehicles.length > 0 ? (
-                    <ul className="mx-4 grid grid-cols-5 gap-4 justify-between ">
-                        {vehicles.slice(minVehicles, maxVehicles).map(vehicles => (
-                            <li key={vehicles.id}>
+                    <ul className="mx-4 grid grid-cols-5 gap-4 justify-between">
+                        {vehicles.slice(minVehicles, maxVehicles).map(vehicle => (
+                            <li key={vehicle.id}>
                                 <CardVehicle
-                                    imgVeihcle={vehicles.baner1}
-                                    logoVeihcle={vehicles.mark.banner}
-                                    nameVeihcle={vehicles.model}
-                                    kmVeihcle={vehicles.km}
-                                    yearVeihcle={vehicles.year}
-                                    priceVeihcle={vehicles.price}
-                                ></CardVehicle>
+                                    imgVeihcle={vehicle.baner1}
+                                    logoVeihcle={vehicle.mark.banner}
+                                    nameVeihcle={vehicle.model}
+                                    kmVeihcle={vehicle.km}
+                                    yearVeihcle={vehicle.year}
+                                    priceVeihcle={vehicle.price}
+                                />
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p>Carregando ...</p>
+                    <p className='text-gray-500 select-none'>carregando...</p>
                 )}
 
                 <div className="flex flex-row justify-center gap-10 my-20 select-none">
-                    <button onClick={changeMinVehicle}
-                        disabled={minVehicles == 0} // Desativa o botão se o limite for o máximo
-                        className={`px-4 py-2 hover:bg-red-100 rounded border-red-700 border-[1px]  ${minVehicles == 0
-                            ? "invisible"
-                            : "visible"
-                            }`}
-                    >
+                    <button onClick={changeMinVehicle} disabled={minVehicles === 0} className="px-4 py-2 hover:bg-red-100 rounded border-red-700 border-[1px]">
                         Voltar
                     </button>
-
-                    <button onClick={changeMaxVehicle}
-                        disabled={maxVehicles >= vehicles.length} // Desativa o botão quando atingir o limite máximo
-                        className={`px-4 py-2 hover:bg-green-100 rounded border-green-700 border-[1px] ${maxVehicles >= vehicles.length
-                            ? "invisible"
-                            : "visible"
-                            }`}
-                    >
+                    <button onClick={changeMaxVehicle} disabled={maxVehicles >= vehicles.length} className="px-4 py-2 hover:bg-green-100 rounded border-green-700 border-[1px]">
                         Avançar
                     </button>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }

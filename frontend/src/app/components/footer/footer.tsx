@@ -29,7 +29,7 @@ export function Footer() {
 
     return (
         <footer className="flex flex-col gap-5 h-screen max-h-[300px] background-web justify-center items-center text-white">
-            
+
             <div>
                 {logoWeb && logoWeb.linck ? (
 
@@ -41,7 +41,7 @@ export function Footer() {
                         className="object-cover max-w-[200px] max-h-[70px] rounded-md"
                     />
                 ) : (
-                    <p className='text-red-700'>Loading logo...</p>
+                    <p className='text-gray-500 select-none'>carregando...</p>
                 )}
 
 
