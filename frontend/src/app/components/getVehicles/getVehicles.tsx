@@ -49,25 +49,39 @@ interface Vehicles {
 export default function Vehicles() {
 
     const [vehicles, setVehicles] = useState<Vehicles[]>([])
+
+    const [filters, setFilters] = useState({
+        searchValue: "",
+        valueMaxVehicle: "",
+        valueMinVehicle: ""
+    });
+
     const valueChangeMinOrMaxVehicle = 20
     const [maxVehicles, setMaxVehicles] = useState(valueChangeMinOrMaxVehicle)
     const [minVehicles, setMinVehicles] = useState(0)
 
     // Referência para o div-base
     const divBaseRef = useRef<HTMLDivElement | null>(null);
+    
+      // Função para buscar os veículos com os filtros
+      async function listVehicle(filters: any) {
+        try {
+            const response = await api.post("/search", filters);
+            console.log(response.data);
+            setVehicles(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Função para aplicar os filtros vindos do Filtro
+    const applyFilters = (newFilters: any) => {
+        setFilters(newFilters); // Atualiza os filtros no estado
+        listVehicle(newFilters); // Chama a API com os novos filtros
+    };
 
     useEffect(() => {
-        async function listVehicle() {
-            try {
-                const response = await api.post("/search")
-                console.log(response.data)
-                setVehicles(response.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
-        listVehicle()
+        listVehicle(filters)
     }, []);
 
     // Função para rolar até o div-base
@@ -102,9 +116,9 @@ export default function Vehicles() {
 
     return (
         <div className="flex flex-col gap-10">
-            <Fltro></Fltro>
+            <Fltro applyFilters={applyFilters} />
             <div>
-                <div ref={divBaseRef} id="div-base" className="h-1">
+                <div ref={divBaseRef} className="h-1">
                     {/* Esse fica sem nada dentro mesmo serve para direcionar após paginar a tela*/}
                 </div>
                 {vehicles.length > 0 ? (
