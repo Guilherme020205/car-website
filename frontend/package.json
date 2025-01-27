@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroui/input": "^2.4.9",
+    "@heroui/select": "^2.4.10",
     "@heroui/system": "^2.4.6",
     "@heroui/theme": "^2.4.5",
     "@react-icons/all-files": "^4.1.0",

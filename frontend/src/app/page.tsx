@@ -1,7 +1,5 @@
 import Home from "./components/home/home";
-import Contacts from './components/contacts/constacts';
 import { Footer } from "./components/footer/footer";
-import { CardVehicle } from './components/getVehicles/cardVehicle/cardVehicle';
 import Vehicles from './components/getVehicles/getVehicles';
 
 export default function Main() {

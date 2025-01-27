@@ -15,8 +15,8 @@ export function CardVehicle(
                     src={imgVeihcle}
                     alt="foto_veiculo"
                     width={200}
-                    height={200}
-                    className="rounded-t-md"
+                    height={130}
+                    className="rounded-t-md max-h-[130px] max-w-[200px] w-[200px] h-[130px]"
                 />
             </div>
 
