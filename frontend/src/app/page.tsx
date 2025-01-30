@@ -9,11 +9,8 @@ export default function Main() {
       <div className="bg-white ">
         <Home></Home>
         <div className="mx-20 my-20">
-
           <Vehicles></Vehicles> 
-
         </div>
-        <Footer></Footer>
       </div>
     </div>
   );

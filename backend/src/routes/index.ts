@@ -27,6 +27,7 @@ import { ListTypeRedeController } from "../Controllers/TypeRedes/ListTypeRedeCon
 import { ListFuelsTypeController } from "../Controllers/fuels/ListFuelsTypeController";
 import { ListExchangesTypeController } from "../Controllers/exchanges/ListExchangesTypeController";
 import { ListBodyworksTypeController } from "../Controllers/bodyworks/ListFuelsTypeController";
+import { GetVehicleController } from "../Controllers/Vehicle/GetVehicleController";
 
 const router = Router();
 
@@ -55,6 +56,7 @@ router.post('/location', AddOrUpDateLocationController);
 router.get('/location', ViewLocationController);
 
 router.post('/vehicle', CreatVehicleController);
+router.get('/vehicle/:id', GetVehicleController);
 
 router.post('/search', SearchController);
 

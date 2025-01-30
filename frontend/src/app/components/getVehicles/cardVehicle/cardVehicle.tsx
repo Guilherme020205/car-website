@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export function CardVehicle(
     { imgVeihcle, logoVeihcle, nameVeihcle, kmVeihcle, yearVeihcle, priceVeihcle }:
-        { imgVeihcle: string; logoVeihcle: string; nameVeihcle: string; kmVeihcle: number; yearVeihcle: string; priceVeihcle: number; }
+        { imgVeihcle: string; logoVeihcle: string; nameVeihcle: string; kmVeihcle: number; yearVeihcle: string; priceVeihcle: string; }
 ) {
 
 

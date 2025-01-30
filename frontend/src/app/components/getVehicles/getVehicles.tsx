@@ -135,7 +135,7 @@ export default function Vehicles() {
                                         nameVeihcle={vehicle.model}
                                         kmVeihcle={vehicle.km}
                                         yearVeihcle={vehicle.year}
-                                        priceVeihcle={vehicle.price}
+                                        priceVeihcle={vehicle.price.toLocaleString('pt-BR')}
                                     />
                                 </Link>
                             </li>
