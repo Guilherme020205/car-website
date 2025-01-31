@@ -4,6 +4,8 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Accordion, AccordionItem } from "@heroui/accordion";
+import { CardVehicle } from '@/app/components/getVehicles/cardVehicle/cardVehicle';
+import Link from 'next/link';
 
 
 interface Vehicles {
@@ -57,7 +59,7 @@ export default function ViewVehiclePage() {
     async function getVehicle() {
       try {
         const response = await api.get(`/vehicle/${id}`);
-        console.log(response.data);
+        // console.log(response.data);
         setVehicle(response.data[0]); // Assumindo que é o primeiro item do array
       } catch (error) {
         console.log(error);
@@ -65,6 +67,23 @@ export default function ViewVehiclePage() {
     }
     getVehicle();
   }, [id]);
+
+
+  const [vehicles, setVehicles] = useState<Vehicles[]>([]);
+
+
+  useEffect(() => {
+    async function fetchVehicles() {
+      try {
+        const response = await api.post("/search");
+        setVehicles(response.data);
+        // console.log(response.data)
+      } catch (error) {
+        console.error("Erro ao buscar veículos:", error);
+      }
+    }
+    fetchVehicles();
+  }, []);
 
   if (!vehicle) return <div>Carregando...</div>;
 
@@ -116,7 +135,7 @@ export default function ViewVehiclePage() {
 
             </div>
 
-              <p className='text-gray-500 text-xs select-text'>{vehicle.id}</p>
+            <p className='text-gray-500 text-xs select-text'>{vehicle.id}</p>
 
           </div>
 
@@ -155,7 +174,39 @@ export default function ViewVehiclePage() {
 
           </div>
         </div>
+
       </div>
+
+      <div className='flex mx-20 justify-center mb-20'>
+
+        <div>
+          {vehicles.length > 0 ? (
+            <ul className="grid grid-cols-5 gap-16">
+              {vehicles.slice(0, 5).map(vehicle => (
+                <li key={vehicle.id}>
+                  <Link href={`${vehicle.id}`}>
+
+                    <CardVehicle
+                      imgVeihcle={vehicle.baner1}
+                      logoVeihcle={vehicle.mark.banner}
+                      nameVeihcle={vehicle.model}
+                      kmVeihcle={vehicle.km}
+                      yearVeihcle={vehicle.year}
+                      priceVeihcle={vehicle.price.toLocaleString('pt-BR')}
+                    />
+
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+          ) : (
+            <p className="text-gray-500 select-none">Buscando...</p>
+          )}
+
+        </div>
+      </div>
+
     </div>
   );
 }

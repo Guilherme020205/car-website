@@ -137,6 +137,7 @@ export default function Vehicles() {
                                         yearVeihcle={vehicle.year}
                                         priceVeihcle={vehicle.price.toLocaleString('pt-BR')}
                                     />
+                                    
                                 </Link>
                             </li>
                         ))}

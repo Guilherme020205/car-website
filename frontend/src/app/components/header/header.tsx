@@ -51,8 +51,8 @@ export function Header() {
             <div className="flex flex-row mx-36 gap-36">
                 <Link href='/' className='hover:destacText2 '>Home</Link>
                 <div className="flex flex-row gap-10">
-                    <Link href="contact" className='hover:destacText2 '>Contatos</Link>
-                    <Link href="location" className='hover:destacText2 '>Localização</Link>
+                    <Link href="Contact" className='hover:destacText2 '>Contatos</Link>
+                    <Link href="Location" className='hover:destacText2 '>Localização</Link>
                 </div>
             </div>
         </header>
