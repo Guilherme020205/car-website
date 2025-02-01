@@ -1,10 +1,11 @@
 import prismaClient from "../../prisma";
 
-export async function CreatContactService(name: string, number: string) {
+export async function CreatContactService(name: string, number: string, linck: string) {
     const creatContact = prismaClient.contacts.create({
         data: {
             name: name,
-            number: number
+            number: number,
+            photo: linck
         }
     })
 

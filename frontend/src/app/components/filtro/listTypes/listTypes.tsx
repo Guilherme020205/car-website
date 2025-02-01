@@ -19,7 +19,7 @@ export function ListTypes({ nameType, selectedItems, onSelect }: ListTypesProps)
     async function listTypes(urlType: string) {
       try {
         const response = await api.get(`/${urlType}`);
-        console.log(response.data);
+        // console.log(response.data);
         setTypeVehicle(response.data);
       } catch (error) {
         console.log(error);

@@ -2,14 +2,15 @@
 
 import { api } from "@/services/api"
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import logo_whatsapp from '../img/79dc31280371b8ffbe56ec656418e122.png'
+ import CardVehicle from './Cardcontact/Cardcontact'
+import CardnetWork from "./CardnetWork/CardnetWork";
 
 
 interface Contact {
     id: string;
     name: string;
     number: string;
+    photo: string;
     // web.whatsapp.com/send?phone=+
 }
 
@@ -24,7 +25,7 @@ interface TypeNetWorks {
     banner: string;
 }
 
-export default function Contacts() {
+export default function ContactsList() {
 
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [netWorks, setnetWorks] = useState<NetWorks[]>([]);
@@ -35,7 +36,7 @@ export default function Contacts() {
             try {
                 const response = await api.get('/contact/list')
                 setContacts(response.data)
-                console.log(response.data)
+                // console.log(response.data)
             } catch (error) {
                 console.error(error)
             }
@@ -46,7 +47,7 @@ export default function Contacts() {
             try {
                 const response = await api.get('/rede/list')
                 setnetWorks(response.data)
-                console.log(response.data)
+                // console.log(response.data)
 
             } catch (error) {
                 console.log(error)
@@ -58,7 +59,7 @@ export default function Contacts() {
             try {
                 const response = await api.get('/typerede/list')
                 setTypeNetWorks(response.data)
-                console.log(response.data)
+                // console.log(response.data)
 
             } catch (error) {
                 console.log(error)
@@ -67,74 +68,64 @@ export default function Contacts() {
         listTypeNetWorks()
 
     }, []);
-    
+
     function getTypeBanner(type_id: string): string {
         const typeNetWork = typeNetWorks.find(type => type.id === type_id);
         return typeNetWork ? typeNetWork.banner : ''; // Retorna a URL da imagem ou uma string vazia
     }
 
     return (
-        <div className="mb-[800px] flex flex-row gap-28 justify-center mx-16">
+        <div className="mb-[300px] flex flex-col gap-20 justify-center mx-16">
 
-            <div className="flex flex-col gap-5 items-center"> {/*div redes*/}
-                <h2 className="font-bold">Nossas redes sociais</h2>
-                {netWorks.length > 0 ? (
-                    <ul className="flex flex-row gap-5">
-                        {netWorks.map(netWork => (
-                            <li key={netWork.id} className="mb-4">
-                                <a
-                                    href={netWork.linck}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-black flex items-center p-2 hover:bg-gray-300 transition duration-[1.5s] max-w-[300px] rounded"
-                                >
-                                    <Image
-                                        src={getTypeBanner(netWork.type_id) }
-                                        width={40}
-                                        height={40}
-                                        className="object-cover max-h-[40px] max-w-[40px] rounded-md"
-                                        alt="Image banner"
-                                    />
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p className='text-gray-500 select-none'>carregando...</p>
-                )}
+            {/* div contatos */}
+            <div className="flex flex-col items-center mt-10">
 
+                <h2 className="font-bold mb-10 text-3xl text-white">Contato comercial</h2>
 
-            </div>
-
-            <div className="flex flex-col gap-5 items-center"> {/* div contatos */}
-                <h2 className="font-bold">Contato comercial</h2>
                 {contacts.length > 0 ? (
-                    <ul className="flex flex-col">
-                        {contacts.map(contact => (
-                            <li key={contact.id} className="mb-4">
-                                <a
-                                    href={`https://web.whatsapp.com/send?phone=+55${contact.number}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-black flex items-center p-2 hover:bg-gray-300 transition duration-[1.5s] max-w-[300px] rounded"
-                                >
-                                    <Image
-                                        src={logo_whatsapp}
-                                        width={40}
-                                        height={40}
-                                        className="object-cover max-h-[40px] max-w-[40px] rounded-md"
-                                        alt="Image banner"
-                                    />
-                                    {contact.name}
-                                </a>
+                    <ul className="grid grid-cols-2 gap-8">
+                        {contacts.map(contacts => (
+                            <li key={contacts.id}>
+                                <CardVehicle
+                                    name={contacts.name}
+                                    number={contacts.number}
+                                    photo={contacts.photo}
+                                />
                             </li>
                         ))}
                     </ul>
+
                 ) : (
                     <p className='text-gray-500 select-none'>carregando...</p>
                 )}
+
             </div>
 
-        </div>
+
+            {/*div redes*/}
+
+            <div className="flex flex-col items-center">
+
+                <h2 className="font-bold mb-10 text-3xl text-white">Nossas redes sociais</h2>
+
+                {netWorks.length > 0 ? (
+                    <ul className="background-card flex flex-row mb-4 justify-center gap-12 items-center py-4 w-[100%] rounded-xl">
+                        {netWorks.map(netWork => (
+                            <li key={netWork.id}>
+                                <CardnetWork
+                                    linck={netWork.linck}
+                                    photo={getTypeBanner(netWork.type_id) }
+                                />
+                            </li>
+                        ))}
+                    </ul>
+
+                ) : (
+                    <p className='text-gray-500 select-none'>carregando...</p>
+                )}
+
+            </div>
+
+        </div >
     );
 } 

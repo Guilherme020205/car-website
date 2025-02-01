@@ -8,6 +8,7 @@ import FunctionfetchLogo from "../functions/getLogo";
 export function Header() {
 
     const [logoWeb, setLogoWeb] = useState<{ linck: string } | null>(null);
+    const [localizacao, setLocalizacao] = useState<{ linck: string } | null>(null);
 
     useEffect(() => {
         async function fetchLogo() {
@@ -27,6 +28,18 @@ export function Header() {
         }
 
         fetchLogo()
+
+        async function fetchLocalizacao() {
+            try {
+                const response = await api.get('/location')
+                // console.log(response.data)
+                setLocalizacao(response.data[0])
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchLocalizacao()
 
     }, []);
 
@@ -51,8 +64,8 @@ export function Header() {
             <div className="flex flex-row mx-36 gap-36">
                 <Link href='/' className='hover:destacText2 '>Home</Link>
                 <div className="flex flex-row gap-10">
-                    <Link href="Contact" className='hover:destacText2 '>Contatos</Link>
-                    <Link href="Location" className='hover:destacText2 '>Localização</Link>
+                    <Link href="/Contact" className='hover:destacText2 '>Contatos</Link>
+                    <Link href={`${localizacao?.linck}`} className='hover:destacText2 '>Localização</Link>
                 </div>
             </div>
         </header>

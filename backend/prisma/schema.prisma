@@ -52,6 +52,7 @@ model Contacts {
   id         String    @id @default(uuid())
   name       String
   number     String
+  photo     String?
   create_at  DateTime? @default(now())
   updated_at DateTime? @default(now())
 
