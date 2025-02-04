@@ -95,7 +95,14 @@ export default function ViewVehiclePage() {
         <div className="flex gap-0 max-h-[500px] w-full">
 
 
-        <Carrossel_images></Carrossel_images>
+        <Carrossel_images
+        
+          banner1={vehicle.baner1}
+          banner2={vehicle.baner2}
+          banner3={vehicle.baner3}
+          banner4={vehicle.baner4}
+          banner5={vehicle.baner5}
+        />
 
 
           {/* <div className="w-[55%] h-[500px] relative">
