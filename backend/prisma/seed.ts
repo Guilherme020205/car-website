@@ -95,6 +95,18 @@ async function main() {
         {
             name: "Lexus",
             banner: "https://logodownload.org/wp-content/uploads/2021/05/lexus-logo-0-1536x1536.png"
+        },
+        {
+            name: "Ferrari",
+            banner: "https://logodownload.org/wp-content/uploads/2017/05/ferrari-logo-0.png"
+        },
+        {
+            name: "Ford",
+            banner: "https://logodownload.org/ford-logo/ford-logo-4/"
+        },
+        {
+            name: "Dodge",
+            banner: "https://logodownload.org/wp-content/uploads/2019/03/dogge-logo-0.png"
         }
     ];
 
