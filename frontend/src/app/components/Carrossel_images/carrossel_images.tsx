@@ -39,7 +39,7 @@ export default function Carrossel_images({
             <div className="flex">
                 {images.map((img, index) => (
                     <div key={index} className="min-w-[1000px] flex-[0 0 100%]">
-                        <img src={img} alt={`Slide ${index + 1}`} className="w-full h-[500px] object-cover" />
+                        <img src={img} alt={`Slide ${index + 1}`} className="w-full h-[500px] object-cover hover:scale-125 transition-all duration-500 cursor-pointer"/>
                     </div>
                 ))}
             </div>

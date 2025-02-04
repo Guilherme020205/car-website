@@ -52,7 +52,7 @@ export function Filtro({ onUpdatePreferences }: FiltroProps) {
 
     return (
         <div className="flex flex-row justify-between gap-10">
-            <div className="flex flex-row w-full h-[50px] max-w-[500px] bg-gray-100 rounded-md">
+            <div className="select-none flex flex-row w-full h-[50px] max-w-[500px] bg-gray-100 rounded-md">
                 <Input
                     label="Pesquisar..."
                     type="text"

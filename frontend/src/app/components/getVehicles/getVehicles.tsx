@@ -110,7 +110,7 @@ export default function Vehicles() {
         <div className="flex flex-col gap-10">
             <Filtro onUpdatePreferences={fetchVehicles} />
             <div>
-                <div ref={divBaseRef} className="mb-4 ">
+                <div ref={divBaseRef} className="mb-4 select-none">
                     <Select
                         isRequired
                         className="max-w-xs"

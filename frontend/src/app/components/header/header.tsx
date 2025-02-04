@@ -44,7 +44,7 @@ export function Header() {
     }, []);
 
     return (
-        <header className="flex bg-white  flex-row h-[80px] justify-between mx-16 items-center">
+        <header className="select-none flex bg-white  flex-row h-[80px] justify-between mx-16 items-center">
 
             {logoWeb && logoWeb.linck? (
 

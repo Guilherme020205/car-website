@@ -194,7 +194,7 @@ export default function ViewVehiclePage() {
 
         <div>
           {vehicles.length > 0 ? (
-            <ul className="grid grid-cols-5 gap-16">
+            <ul className="grid grid-cols-5 gap-16 select-none">
               {vehicles.slice(0, 5).map(vehicle => (
                 <li key={vehicle.id}>
                   <Link href={`${vehicle.id}`}>

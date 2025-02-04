@@ -24,7 +24,7 @@ export default function Home() {
     }, []); 
     
     return (
-        <div className="background-web min-h-screen max-h-[800px] flex items-center justify-center mb-7">
+        <div className="select-none background-web min-h-screen max-h-[800px] flex items-center justify-center mb-7">
             {banner && banner.linck ? (
                 <Image
                     src={banner.linck}

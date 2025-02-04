@@ -8,7 +8,7 @@ export function CardVehicle(
 
 
     return (
-        <div className="flex flex-col bg-gray-200 w-[200px] h-[100%] rounded-md gap-2">
+        <div className="select-none flex flex-col bg-gray-200 w-[200px] h-[100%] rounded-md gap-2">
 
             <div>
                 <Image

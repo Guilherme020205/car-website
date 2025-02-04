@@ -41,7 +41,7 @@ export function Footer() {
 
 
     return (
-        <footer className="flex flex-col gap-5 h-screen max-h-[300px] background-web justify-center items-center text-white">
+        <footer className="select-none flex flex-col gap-5 h-screen max-h-[300px] background-web justify-center items-center text-white">
 
             <div>
                 {logoWeb && logoWeb.linck ? (
