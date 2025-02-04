@@ -63,7 +63,7 @@ export function Footer() {
             <NetWorks></NetWorks>
             <div className="flex flex-row gap-40">
                 <Link href='/' className='hover:destacText '>Home</Link>
-                <Link href="contact" className='hover:destacText '>Contatos</Link>
+                <Link href="Contact" className='hover:destacText '>Contatos</Link>
                 <Link href={`${localizacao?.locationName}`} className='hover:destacText' target="_blank" rel="noopener noreferrer">Localização</Link>
             </div>
 
