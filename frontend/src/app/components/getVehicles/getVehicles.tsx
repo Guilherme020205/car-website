@@ -125,7 +125,7 @@ export default function Vehicles() {
                 </div>
                 {filteredVehicles.length > 0 ? (
                     <ul className="mx-4 grid grid-cols-5 gap-4 justify-between">
-                        {filteredVehicles.slice(minVehicles, maxVehicles).map(vehicle => (
+                        {filteredVehicles.slice(minVehicles, maxVehicles).map(vehicle => ( 
                             <li key={vehicle.id}>
                                 <Link href={`ViewVehicle/${vehicle.id}`}>
 

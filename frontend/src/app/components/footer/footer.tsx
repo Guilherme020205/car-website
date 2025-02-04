@@ -9,6 +9,7 @@ import Link from 'next/link';
 export function Footer() {
 
     const [logoWeb, setLogoWeb] = useState<{ linck: string } | null>(null);
+    const [localizacao, setLocalizacao] = useState<{ locationName: string } | null>(null);
 
     useEffect(() => {
         async function fetchLogo() {
@@ -23,6 +24,18 @@ export function Footer() {
         }
 
         fetchLogo()
+
+        async function fetchLocalizacao() {
+            try {
+                const response = await api.get('/location')
+                console.log(response.data[0])
+                setLocalizacao(response.data[0])
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchLocalizacao()
 
     }, []);
 
@@ -51,7 +64,7 @@ export function Footer() {
             <div className="flex flex-row gap-40">
                 <Link href='/' className='hover:destacText '>Home</Link>
                 <Link href="contact" className='hover:destacText '>Contatos</Link>
-                <Link href="location" className='hover:destacText '>Localização</Link>
+                <Link href={`${localizacao?.locationName}`} className='hover:destacText' target="_blank" rel="noopener noreferrer">Localização</Link>
             </div>
 
             <div className='bg-white mt-[10px] w-[100%] h-[1px]'></div>

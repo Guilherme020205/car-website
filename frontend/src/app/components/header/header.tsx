@@ -8,7 +8,7 @@ import FunctionfetchLogo from "../functions/getLogo";
 export function Header() {
 
     const [logoWeb, setLogoWeb] = useState<{ linck: string } | null>(null);
-    const [localizacao, setLocalizacao] = useState<{ linck: string } | null>(null);
+    const [localizacao, setLocalizacao] = useState<{ locationName: string } | null>(null);
 
     useEffect(() => {
         async function fetchLogo() {
@@ -32,7 +32,7 @@ export function Header() {
         async function fetchLocalizacao() {
             try {
                 const response = await api.get('/location')
-                // console.log(response.data)
+                console.log(response.data[0])
                 setLocalizacao(response.data[0])
 
             } catch (error) {
@@ -65,7 +65,7 @@ export function Header() {
                 <Link href='/' className='hover:destacText2 '>Home</Link>
                 <div className="flex flex-row gap-10">
                     <Link href="/Contact" className='hover:destacText2 '>Contatos</Link>
-                    <Link href={`${localizacao?.linck}`} className='hover:destacText2 '>Localização</Link>
+                    <Link href={`${localizacao?.locationName}`} className='hover:destacText2' target="_blank" rel="noopener noreferrer">Localização</Link>
                 </div>
             </div>
         </header>

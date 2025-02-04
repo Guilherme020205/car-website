@@ -7,6 +7,7 @@ import { Accordion, AccordionItem } from "@heroui/accordion";
 import { CardVehicle } from '@/app/components/getVehicles/cardVehicle/cardVehicle';
 import Link from 'next/link';
 
+import Carrossel_images from '../../components/Carrossel_images/carrossel_images';
 
 interface Vehicles {
   id: string;
@@ -93,7 +94,11 @@ export default function ViewVehiclePage() {
 
         <div className="flex gap-0 max-h-[500px] w-full">
 
-          <div className="w-[55%] h-[500px] relative">
+
+        <Carrossel_images></Carrossel_images>
+
+
+          {/* <div className="w-[55%] h-[500px] relative">
             <Image
               src={vehicle.baner1}
               alt={`${vehicle.mark.name} banner`}
@@ -115,7 +120,8 @@ export default function ViewVehiclePage() {
                 </div>
               )
             )}
-          </div>
+          </div> */}
+
         </div>
 
 
