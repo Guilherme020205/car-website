@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
-    "build": "tsc --build",
-    "start": "node dist/index.ts",
-    "vercel-build": "prisma generate && prisma migrate deploy",
-    "prisma:generate": "prisma generate"
+    "dev": "ts-node-dev src/server.ts"
   },
   "prisma": {
     "seed": "ts-node-dev prisma/seed.ts"
