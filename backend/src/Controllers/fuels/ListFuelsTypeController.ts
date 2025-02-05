@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListFuelsTypeService } from "../../Services/fuels/listFuelsTypeService";
+import { ListFuelsTypeService } from "../../Services/fuels/ListFuelsTypeService";
 
 
 export async function ListFuelsTypeController(req: Request, res: Response) {
