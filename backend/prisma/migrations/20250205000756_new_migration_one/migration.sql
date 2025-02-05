@@ -42,6 +42,7 @@ CREATE TABLE "contacts" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "number" TEXT NOT NULL,
+    "photo" TEXT,
     "create_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
