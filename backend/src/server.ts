@@ -1,6 +1,5 @@
 import  express, { json } from "express";
 import router from './routes/index';
-import path from "path";
 import fileUpload from "express-fileupload";
 import cors from "cors"
 
@@ -13,11 +12,6 @@ app.use(fileUpload({
 }))
 
 app.use(router)
-
-// app.use(
-//     './files',
-//     express.static(path.resolve(__dirname,'..','tmp'))
-// )
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server on port ${port}`))

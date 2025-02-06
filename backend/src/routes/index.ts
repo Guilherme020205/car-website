@@ -31,8 +31,6 @@ import { GetVehicleController } from "../Controllers/Vehicle/GetVehicleControlle
 
 const router = Router();
 
-const upload = multer(uploadConfig.upload("./tmp"))
-
 router.post('/login', LoginUserController);
 
 router.post('/contact/creat', CreatContactController);
