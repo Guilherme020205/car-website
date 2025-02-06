@@ -5,9 +5,9 @@ import { v2 as cloudinary, UploadApiResponse } from 'cloudinary';
 
 // Configuração do Cloudinary utilizando variáveis de ambiente
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET
+    cloud_name: process.env.CLOUDINARY_NAME || "dts3okbt6", // Nome do Cloudinary
+    api_key: process.env.CLOUDINARY_KEY || "261981328535743", // Chave da API do Cloudinary
+    api_secret: process.env.CLOUDINARY_SECRET || "yhXPC9sQ26ry6pJomBwtvv0hRDE" // Chave secreta da API do Cloudinary
 });
 
 // Função auxiliar para realizar o upload ao Cloudinary
