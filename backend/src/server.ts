@@ -8,8 +8,11 @@ app.use(cors())
 app.use(json())
 
 app.use(fileUpload({
-    limits:{ fileSize: 50 * 1024 * 1024} // espera o envio de no maximo 50mb
-}))
+    limits: { fileSize: 50 * 1024 * 1024 }, // Limite de 50MB
+    useTempFiles: false, // Impede o uso de arquivos temporários
+    tempFileDir: "/dev/null" // Faz com que o temp seja descartado
+}));
+
 
 app.use(router)
 
