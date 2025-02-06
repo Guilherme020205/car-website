@@ -3,6 +3,7 @@
     "target": "ES6",
     "module": "CommonJS",
     "sourceMap": true, 
+    "rootDir": ".",
     "outDir": "dist",
     "strict": true,
     "lib": [
@@ -11,5 +12,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "src/**/*",
+    "prisma/**/*"
+  ],
 }
+ 

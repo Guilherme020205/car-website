@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "start": "node src/index.ts",
-    "vercel-build": "prisma generate"
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "vercel-build": "tsc && prisma generate && prisma migrate deploy"
   },
   "prisma": {
     "seed": "ts-node-dev prisma/seed.ts"
