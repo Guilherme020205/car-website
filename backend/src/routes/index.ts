@@ -1,5 +1,7 @@
 import { Router } from "express";
- 
+import multer from "multer";
+import uploadConfig from "../config/multer";
+
 import { LoginUserController } from "../Controllers/User/LoginUserController";
 
 import { CreatContactController } from "../Controllers/Contatos/CreatContactController";
@@ -39,7 +41,8 @@ router.get('/rede/list', ListRedeController);
 router.delete('/rede/remove', DeletRedeController);
 
 router.get('/typerede/list', ListTypeRedeController);
- 
+
+// router.post('/banner', upload.single('linck'), addOrUpdateBannerController);
 router.post('/banner', addOrUpdateBannerController);
 router.get('/banner', ViewBannerController);
 
