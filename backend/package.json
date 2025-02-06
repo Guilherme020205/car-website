@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "start": "node src/index.js",
+    "start": "node src/index.ts",
     "vercel-build": "prisma generate"
   },
   "prisma": {
