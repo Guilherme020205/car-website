@@ -1,11 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const multer_1 = __importDefault(require("multer"));
-const multer_2 = __importDefault(require("../config/multer"));
 const LoginUserController_1 = require("../Controllers/User/LoginUserController");
 const CreatContactController_1 = require("../Controllers/Contatos/CreatContactController");
 const ListContactController_1 = require("../Controllers/Contatos/ListContactController");
@@ -27,7 +22,6 @@ const ListExchangesTypeController_1 = require("../Controllers/exchanges/ListExch
 const ListFuelsTypeController_2 = require("../Controllers/bodyworks/ListFuelsTypeController");
 const GetVehicleController_1 = require("../Controllers/Vehicle/GetVehicleController");
 const router = (0, express_1.Router)();
-const upload = (0, multer_1.default)(multer_2.default.upload("./tmp"));
 router.post('/login', LoginUserController_1.LoginUserController);
 router.post('/contact/creat', CreatContactController_1.CreatContactController);
 router.get('/contact/list', ListContactController_1.ListContactController);

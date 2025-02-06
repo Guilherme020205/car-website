@@ -47,10 +47,6 @@ app.use((0, express_fileupload_1.default)({
     limits: { fileSize: 50 * 1024 * 1024 } // espera o envio de no maximo 50mb
 }));
 app.use(index_1.default);
-// app.use(
-//     './files',
-//     express.static(path.resolve(__dirname,'..','tmp'))
-// )
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server on port ${port}`));
 //# sourceMappingURL=server.js.map
