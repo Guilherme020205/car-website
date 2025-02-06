@@ -1,15 +1,16 @@
-{ 
-  "versão": 2, 
-  "compilações" : [ 
-    { 
-      " origem ": "server.js" , 
-      "uso" : "@vercel/node"
-     } 
-  ], 
-  "rotas": [ 
-    { 
-      " origem ": "/(.*)" , 
-      "destino" : "server.js"
-     } 
-  ] 
-}
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "src/server.js"
+      }
+    ]
+  }
+  
