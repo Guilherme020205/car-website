@@ -41,7 +41,13 @@ export function Footer() {
 
 
     return (
-        <footer className="select-none flex flex-col gap-5 h-screen max-h-[300px] background-web justify-center items-center text-white">
+        <footer
+            className="
+                select-none flex flex-col background-web py-10
+                justify-center items-center 
+                md:gap-5 md:text-white 
+            "
+        >
 
             <div>
                 {logoWeb && logoWeb.linck ? (
@@ -61,7 +67,13 @@ export function Footer() {
 
             </div>
             <NetWorks></NetWorks>
-            <div className="flex flex-row gap-40">
+            <div
+                className="
+                    flex flex-row text-white 
+                    gap-10
+                    md:gap-40 
+                "
+            >
                 <Link href='/' className='hover:destacText '>Home</Link>
                 <Link href="Contact" className='hover:destacText '>Contatos</Link>
                 <Link href={`${localizacao?.locationName}`} className='hover:destacText' target="_blank" rel="noopener noreferrer">Localização</Link>

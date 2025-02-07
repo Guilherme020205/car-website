@@ -45,32 +45,44 @@ export default function etWorks() {
         listTypeNetWorks()
 
     }, []);
-    
+
     function getTypeBanner(type_id: string): string {
         const typeNetWork = typeNetWorks.find(type => type.id === type_id);
         return typeNetWork ? typeNetWork.banner : ''; // Retorna a URL da imagem ou uma string vazia
     }
 
     return (
-        <div className="flex justify-center mx-16">
+        <div
+            className="
+                flex justify-center mx-16 my-7
+            ">
 
-            <div className="flex flex-col gap-0 items-center"> {/*div redes*/}
-                <h2 className="font-bold">Nossas redes sociais</h2>
+            <div className="flex flex-col gap-2 items-center"> {/*div redes*/}
+                <h2 className="font-bold text-white">Nossas redes sociais</h2>
                 {netWorks.length > 0 ? (
-                    <ul className="flex flex-row gap-5">
+                    <ul
+                        className="
+                                gap-x-8 grid grid-cols-2
+                                md:gap-x-5 md:grid-cols-3
+                            ">
                         {netWorks.map(netWork => (
                             <li key={netWork.id} className="mb-4">
                                 <a
                                     href={netWork.linck}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-black flex items-center p-2 hover:bg-gray-300 transition duration-[1.5s] max-w-[300px] rounded"
+                                    className="
+                                        text-black flex items-center p-2 md:hover:bg-gray-300 transition duration-[1.5s] max-w-[300px] rounded
+                                        "
                                 >
                                     <Image
-                                        src={getTypeBanner(netWork.type_id) }
+                                        src={getTypeBanner(netWork.type_id)}
                                         width={40}
                                         height={40}
-                                        className="object-cover max-h-[40px] max-w-[40px] rounded-md"
+                                        className="
+                                                object-cover rounded-md
+                                                md:max-h-[40px] md:max-w-[40px] 
+                                            "
                                         alt="Image banner"
                                     />
                                 </a>
