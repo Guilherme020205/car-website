@@ -24,13 +24,20 @@ export default function Home() {
     }, []); 
     
     return (
-        <div className="select-none background-web min-h-screen max-h-[800px] flex items-center justify-center mb-7">
+        <div className="
+                select-none background-web flex items-center justify-center mb-7 py-40
+                md:py-40
+            "
+        >
             {banner && banner.linck ? (
                 <Image
                     src={banner.linck}
                     width={1000}
                     height={400}
-                    className="object-cover max-h-[400px] max-w-[1000px] rounded-md"
+                    className="
+                        object-cover max-h-[100%] max-w-[350px]
+                        md:max-w-[1000px] md:rounded-md
+                    "
                     alt="Image banner"
                 />
             ) : (

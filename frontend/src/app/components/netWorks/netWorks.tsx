@@ -54,7 +54,8 @@ export default function etWorks() {
     return (
         <div
             className="
-                flex justify-center mx-16 my-7
+                hidden
+                md:flex justify-center mt-16 my-7
             ">
 
             <div className="flex flex-col gap-2 items-center"> {/*div redes*/}

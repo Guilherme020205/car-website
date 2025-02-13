@@ -8,7 +8,11 @@ export function CardVehicle(
 
 
     return (
-        <div className="select-none flex flex-col bg-gray-200 w-[200px] h-[100%] rounded-md gap-2">
+        <div className="select-none flex flex-col bg-gray-200 h-[100%] rounded-md gap-1
+        w-[150px]
+        md:w-[200px]
+        "
+        >
 
             <div>
                 <Image
@@ -16,7 +20,10 @@ export function CardVehicle(
                     alt="foto_veiculo"
                     width={200}
                     height={130}
-                    className="rounded-t-md max-h-[130px] max-w-[200px] w-[200px] h-[130px]"
+                    className="rounded-t-md 
+                    w-[150px] h-[100px] max-w-[150px] max-h-[100px]
+                    md:w-[200px] md:h-[130px] md:max-w-[200px] md:max-h-[130px]
+                    "
                 />
             </div>
 
@@ -43,8 +50,16 @@ export function CardVehicle(
             </div>
             <div className="flex gap-1 bg-gray-300 w-[100%] rounded-ee-md rounded-es-md">
                 <div className="flex flex-row gap-1 items-center ml-4 my-1">
-                    <p className="font-bold text-[20px] italic">R$</p>
-                    <p className="font-bold text-[23px] text-red-500 italic">{priceVeihcle}</p>
+                    <p className="font-bold italic
+                    text-[15px] 
+                    md:text-[20px] 
+                    "
+                    >R$</p>
+                    <p className="font-bold text-red-500 italic
+                    text-[18px]
+                    md:text-[23px]
+                    "
+                    >{priceVeihcle}</p>
                 </div>
             </div>
         </div>

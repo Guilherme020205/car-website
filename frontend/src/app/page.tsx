@@ -8,7 +8,10 @@ export default function Main() {
     <div>
       <div className="bg-white ">
         <Home></Home>
-        <div className="mx-20 my-20">
+        <div className="
+        mx-4 my-4
+        md:mx-20 md:my-20
+        ">
           <Vehicles></Vehicles> 
         </div>
       </div>

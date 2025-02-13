@@ -42,6 +42,9 @@ export function Footer() {
 
     return (
         <footer
+            className=""
+        >
+        <div
             className="
                 select-none flex flex-col background-web py-10
                 justify-center items-center 
@@ -70,8 +73,8 @@ export function Footer() {
             <div
                 className="
                     flex flex-row text-white 
-                    gap-10
-                    md:gap-40 
+                    gap-10 mt-16
+                    md:gap-40 md:mt-0
                 "
             >
                 <Link href='/' className='hover:destacText '>Home</Link>
@@ -80,6 +83,7 @@ export function Footer() {
             </div>
 
             <div className='bg-white mt-[10px] w-[100%] h-[1px]'></div>
+        </div>
         </footer>
     )
 }
