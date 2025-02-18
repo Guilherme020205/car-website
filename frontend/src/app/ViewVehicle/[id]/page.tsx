@@ -1,13 +1,13 @@
-"use client"
-import { api } from '@/services/api';
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+"use client";
+import { api } from "@/services/api";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Accordion, AccordionItem } from "@heroui/accordion";
-import { CardVehicle } from '@/app/components/getVehicles/cardVehicle/cardVehicle';
-import Link from 'next/link';
+import { CardVehicle } from "@/app/components/getVehicles/cardVehicle/cardVehicle";
+import Link from "next/link";
 
-import Carrossel_images from '../../components/Carrossel_images/carrossel_images';
+import Carrossel_images from "../../components/Carrossel_images/carrossel_images";
 
 interface Vehicles {
   id: string;
@@ -69,9 +69,7 @@ export default function ViewVehiclePage() {
     getVehicle();
   }, [id]);
 
-
   const [vehicles, setVehicles] = useState<Vehicles[]>([]);
-
 
   useEffect(() => {
     async function fetchVehicles() {
@@ -90,20 +88,15 @@ export default function ViewVehiclePage() {
 
   return (
     <div>
-      <div className='flex flex-col gap-5 mb-20 select-none'>
-
+      <div className="flex flex-col gap-5 mb-20 select-none">
         <div className="flex gap-0 max-h-[500px] w-full">
-
-
-        <Carrossel_images
-        
-          banner1={vehicle.baner1}
-          banner2={vehicle.baner2}
-          banner3={vehicle.baner3}
-          banner4={vehicle.baner4}
-          banner5={vehicle.baner5}
-        />
-
+          <Carrossel_images
+            banner1={vehicle.baner1}
+            banner2={vehicle.baner2}
+            banner3={vehicle.baner3}
+            banner4={vehicle.baner4}
+            banner5={vehicle.baner5}
+          />
 
           {/* <div className="w-[55%] h-[500px] relative">
             <Image
@@ -128,14 +121,21 @@ export default function ViewVehiclePage() {
               )
             )}
           </div> */}
-
         </div>
 
-
-        <div className='flex flex-col gap-5 mx-20'>
-          <div className='flex flex-row justify-between items-start'>
-
-            <div className='flex flex-row gap-7 items-center'>
+        <div
+          className="flex flex-col gap-10 md:gap-5
+        mx-4
+        md:mx-20
+        "
+        >
+          <div className="flex flex-row justify-between items-start">
+            <div
+              className="flex items-center
+            gap-2 flex-col
+            md:gap-7 md:flex-row
+            "
+            >
               <Image
                 src={vehicle.mark.banner}
                 width={100}
@@ -144,35 +144,64 @@ export default function ViewVehiclePage() {
                 className="w-[100px]"
               />
 
-              <h1 className='text-gray-700 text-base font-sans'><strong className='text-black text-6xl font-serif'>{vehicle.model}</strong> {vehicle.mark.name}</h1>
-
+              <h1 className="text-gray-700 text-base font-sans">
+                <strong
+                  className="text-black font-serif
+                text-2xl
+                md:text-6xl
+                "
+                >
+                  {vehicle.model}
+                </strong>
+                {vehicle.mark.name}
+              </h1>
             </div>
 
-            <p className='text-gray-500 text-xs select-text'>{vehicle.id}</p>
-
+            <p
+              className="text-gray-500 select-text
+            text-[8px]
+            md:text-xs
+            "
+            >
+              {vehicle.id}
+            </p>
           </div>
 
-          <div className='flex flex-row justify-between items-center mb-20'>
-
-            <div className='flex flex-col gap-1'>
-              <p className='text-4xl'><strong className='text-5xl'>{vehicle.km}</strong><strong>km</strong></p>
-              <p className='text-4xl text-gray-700 italic'>{vehicle.year}</p>
+          <div className="flex
+          flex-col justify-between mb-20 items-end
+          md:flex-row md:justify-between md:mb-20 md:items-center
+          "
+          >
+            <div className="flex 
+            flex-row gap-14
+            md:flex-col md:gap-1
+            "
+            >
+              <p className="text-2xl md:text-4xl">
+                <strong className="text-3xl md:text-5xl">{vehicle.km}</strong>
+                <strong>km</strong>
+              </p>
+              <p className="text-2xl md:text-4xl text-gray-700 italic">{vehicle.year}</p>
             </div>
-            <div className='flex flex-col gap-1'>
-              <p className='flex flex-row gap-4 text-red-600 text-[60px] italic font-bold'><strong className='text-black not-italic font-normal'>R$</strong>{vehicle.price.toLocaleString('pt-BR')}</p>
+            <div className="flex flex-col gap-1">
+              <p className="flex flex-row gap-4 text-red-600 text-[50px] md:text-[60px] italic font-bold">
+                <strong className="text-black not-italic font-normal">
+                  R$
+                </strong>
+                {vehicle.price.toLocaleString("pt-BR")}
+              </p>
             </div>
-
           </div>
 
-          <div className='flex flex-row justify-center gap-20 mb-20'>
-            <p className='flex flex-col text-xl'><strong className='text-3xl text-gray-800 underline'>Combustível</strong> {vehicle.fuel.name}</p>
-            <p className='flex flex-col text-xl'><strong className='text-3xl text-gray-800 underline'>Câmbio</strong> {vehicle.exchange.name}</p>
-            <p className='flex flex-col text-xl'><strong className='text-3xl text-gray-800 underline'>Carroceria</strong> {vehicle.bodyWork.name}</p>
+          <div className='grid grid-cols-3 justify-center items-center gap-5 md:gap-20 mb-20'>
+            <p className='flex flex-col text-xl'><strong className='text-xl md:text-3xl text-gray-800 underline'>Combustível</strong> {vehicle.fuel.name}</p>
+            <p className='flex flex-col text-xl'><strong className='text-xl md:text-3xl text-gray-800 underline'>Câmbio</strong> {vehicle.exchange.name}</p>
+            <p className='flex flex-col text-xl'><strong className='text-xl md:text-3xl text-gray-800 underline'>Carroceria</strong> {vehicle.bodyWork.name}</p>
           </div>
 
           <div>
 
-            <Accordion variant="splitted" className='w-[80%]'>
+            <Accordion variant="splitted" className='w-[100%] md:w-[80%]'>
               <AccordionItem
                 key="1"
                 aria-label="Accordion 1"
@@ -187,15 +216,14 @@ export default function ViewVehiclePage() {
 
           </div>
         </div>
+      </div> 
 
-      </div>
-
-      <div className='flex mx-20 justify-center mb-20'>
+      <div className='flex mx-2 md:mx-20 justify-center mb-20'>
 
         <div>
           {vehicles.length > 0 ? (
-            <ul className="grid grid-cols-5 gap-16 select-none">
-              {vehicles.slice(0, 5).map(vehicle => (
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-16 select-none">
+              {vehicles.slice(0, 4).map(vehicle => (
                 <li key={vehicle.id}>
                   <Link href={`${vehicle.id}`}>
 
@@ -219,7 +247,6 @@ export default function ViewVehiclePage() {
 
         </div>
       </div>
-
     </div>
   );
 }

@@ -37,9 +37,17 @@ export default function Carrossel_images({
     return (
         <div className="overflow-hidden " ref={emblaRef}>
             <div className="flex">
-                {images.map((img, index) => (
-                    <div key={index} className="min-w-[1000px] flex-[0 0 100%]">
-                        <img src={img} alt={`Slide ${index + 1}`} className="w-full h-[500px] object-cover hover:scale-125 transition-all duration-500 cursor-pointer"/>
+                {images.map((img, index) => ( 
+                    <div key={index} className="
+                    min-w-[100%] flex-[0 0 100%]
+                    md:min-w-[1000px] md:flex-[0 0 100%]
+                    "
+                    >
+                        <img src={img} alt={`Slide ${index + 1}`} className=" object-cover transition-all duration-500 cursor-pointer
+                        w-full h-[300px] hover:scale-125 
+                        md:h-[500px] md:hover:scale-125 
+                        "
+                        />
                     </div>
                 ))}
             </div>

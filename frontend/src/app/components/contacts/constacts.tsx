@@ -83,7 +83,7 @@ export default function ContactsList() {
                 <h2 className="font-bold mb-10 text-3xl text-white">Contato comercial</h2>
 
                 {contacts.length > 0 ? (
-                    <ul className="grid grid-cols-2 gap-8">
+                    <ul className="md:grid md:grid-cols-2 gap-10">
                         {contacts.map(contacts => (
                             <li key={contacts.id}>
                                 <CardVehicle
@@ -109,7 +109,10 @@ export default function ContactsList() {
                 <h2 className="font-bold mb-10 text-3xl text-white">Nossas redes sociais</h2>
 
                 {netWorks.length > 0 ? (
-                    <ul className="background-card flex flex-row mb-4 justify-center gap-12 items-center py-4 w-[100%] rounded-xl">
+                    <ul className="background-card flex rounded-xl
+                    flex-row mb-4 justify-center gap-12 items-center py-4 px-7
+                    "
+                    >
                         {netWorks.map(netWork => (
                             <li key={netWork.id}>
                                 <CardnetWork
