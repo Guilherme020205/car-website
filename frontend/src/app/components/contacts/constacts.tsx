@@ -1,134 +1,132 @@
-"use client"
+"use client";
 
-import { api } from "@/services/api"
-import { useEffect, useState } from 'react';
- import CardVehicle from './Cardcontact/Cardcontact'
+import { api } from "@/services/api";
+import { useEffect, useState } from "react";
+import CardVehicle from "./Cardcontact/Cardcontact";
 import CardnetWork from "./CardnetWork/CardnetWork";
-
+import { Spinner } from "@heroui/spinner";
 
 interface Contact {
-    id: string;
-    name: string;
-    number: string;
-    photo: string;
-    // web.whatsapp.com/send?phone=+
+  id: string;
+  name: string;
+  number: string;
+  photo: string;
+  // web.whatsapp.com/send?phone=+
 }
 
 interface NetWorks {
-    id: string;
-    linck: string;
-    type_id: string;
+  id: string;
+  linck: string;
+  type_id: string;
 }
 interface TypeNetWorks {
-    id: string;
-    name: string;
-    banner: string;
+  id: string;
+  name: string;
+  banner: string;
 }
 
 export default function ContactsList() {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [netWorks, setnetWorks] = useState<NetWorks[]>([]);
+  const [typeNetWorks, setTypeNetWorks] = useState<TypeNetWorks[]>([]);
 
-    const [contacts, setContacts] = useState<Contact[]>([]);
-    const [netWorks, setnetWorks] = useState<NetWorks[]>([]);
-    const [typeNetWorks, setTypeNetWorks] = useState<TypeNetWorks[]>([]);
-
-    useEffect(() => {
-        async function listContacts() {
-            try {
-                const response = await api.get('/contact/list')
-                setContacts(response.data)
-                // console.log(response.data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-        listContacts()
-
-        async function listNetWorks() {
-            try {
-                const response = await api.get('/rede/list')
-                setnetWorks(response.data)
-                // console.log(response.data)
-
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        listNetWorks()
-
-        async function listTypeNetWorks() {
-            try {
-                const response = await api.get('/typerede/list')
-                setTypeNetWorks(response.data)
-                // console.log(response.data)
-
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        listTypeNetWorks()
-
-    }, []);
-
-    function getTypeBanner(type_id: string): string {
-        const typeNetWork = typeNetWorks.find(type => type.id === type_id);
-        return typeNetWork ? typeNetWork.banner : ''; // Retorna a URL da imagem ou uma string vazia
+  useEffect(() => {
+    async function listContacts() {
+      try {
+        const response = await api.get("/contact/list");
+        setContacts(response.data);
+        // console.log(response.data)
+      } catch (error) {
+        console.error(error);
+      }
     }
+    listContacts();
 
-    return (
-        <div className="mb-[300px] flex flex-col gap-20 justify-center mx-16">
+    async function listNetWorks() {
+      try {
+        const response = await api.get("/rede/list");
+        setnetWorks(response.data);
+        // console.log(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    listNetWorks();
 
-            {/* div contatos */}
-            <div className="flex flex-col items-center mt-10">
+    async function listTypeNetWorks() {
+      try {
+        const response = await api.get("/typerede/list");
+        setTypeNetWorks(response.data);
+        // console.log(response.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    listTypeNetWorks();
+  }, []);
 
-                <h2 className="font-bold mb-10 text-3xl text-white">Contato comercial</h2>
+  function getTypeBanner(type_id: string): string {
+    const typeNetWork = typeNetWorks.find((type) => type.id === type_id);
+    return typeNetWork ? typeNetWork.banner : ""; // Retorna a URL da imagem ou uma string vazia
+  }
 
-                {contacts.length > 0 ? (
-                    <ul className="md:grid md:grid-cols-2 gap-10">
-                        {contacts.map(contacts => (
-                            <li key={contacts.id}>
-                                <CardVehicle
-                                    name={contacts.name}
-                                    number={contacts.number}
-                                    photo={contacts.photo}
-                                />
-                            </li>
-                        ))}
-                    </ul>
+  return (
+    <div className="mb-[300px] flex flex-col gap-20 justify-center mx-16">
+      {/* div contatos */}
+      <div className="flex flex-col items-center mt-10">
+        <h2 className="font-bold mb-10 text-3xl text-white">
+          Contato comercial
+        </h2>
 
-                ) : (
-                    <p className='text-gray-500 select-none'>carregando...</p>
-                )}
+        {contacts.length > 0 ? (
+          <ul className="md:grid md:grid-cols-2 gap-10">
+            {contacts.map((contacts) => (
+              <li key={contacts.id}>
+                <CardVehicle
+                  name={contacts.name}
+                  number={contacts.number}
+                  photo={contacts.photo}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          // <p className='text-gray-500 select-none'>carregando...</p>
+          <div className="flex justify-center">
+            <Spinner size="lg" color="danger" />
+          </div>
+        )}
+      </div>
 
-            </div>
+      {/*div redes*/}
 
+      <div className="flex flex-col items-center">
+        <h2 className="font-bold mb-10 text-3xl text-white">
+          Nossas redes sociais
+        </h2>
 
-            {/*div redes*/}
-
-            <div className="flex flex-col items-center">
-
-                <h2 className="font-bold mb-10 text-3xl text-white">Nossas redes sociais</h2>
-
-                {netWorks.length > 0 ? (
-                    <ul className="background-card flex rounded-xl
+        {netWorks.length > 0 ? (
+          <ul
+            className="background-card flex rounded-xl
                     flex-row mb-4 justify-center gap-12 items-center py-4 px-7
                     "
-                    >
-                        {netWorks.map(netWork => (
-                            <li key={netWork.id}>
-                                <CardnetWork
-                                    linck={netWork.linck}
-                                    photo={getTypeBanner(netWork.type_id) }
-                                />
-                            </li>
-                        ))}
-                    </ul>
-
-                ) : (
-                    <p className='text-gray-500 select-none'>carregando...</p>
-                )}
-
-            </div>
-
-        </div >
-    );
-} 
+          >
+            {netWorks.map((netWork) => (
+              <li key={netWork.id}>
+                <CardnetWork
+                  linck={netWork.linck}
+                  photo={getTypeBanner(netWork.type_id)}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          // <p className='text-gray-500 select-none'>carregando...</p>
+          <div className="flex justify-center">
+            <Spinner size="lg" color="danger" />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

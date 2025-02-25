@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { Filtro } from "./../filtro/filtro";
 import { Select, SelectItem } from "@heroui/select";
 import Link from "next/link";
+import { Spinner } from "@heroui/spinner";
 
 interface Vehicles {
   id: string;
@@ -151,7 +152,10 @@ export default function Vehicles() {
             ))}
           </ul>
         ) : (
-          <p className="text-gray-500 select-none">Buscando...</p>
+          // <p className="text-gray-500 select-none">Buscando...</p>
+          <div className="flex justify-center">
+            <Spinner size="lg" color="danger"  />
+          </div>
         )}
         {/* Verificar se há veículos para paginar */}
         <div className="flex flex-row justify-center gap-10 my-20 select-none">

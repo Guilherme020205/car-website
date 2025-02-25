@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { CardVehicle } from "@/app/components/getVehicles/cardVehicle/cardVehicle";
 import Link from "next/link";
+import { Spinner } from "@heroui/spinner";
 
 import Carrossel_images from "../../components/Carrossel_images/carrossel_images";
 
@@ -167,12 +168,14 @@ export default function ViewVehiclePage() {
             </p>
           </div>
 
-          <div className="flex
+          <div
+            className="flex
           flex-col justify-between mb-20 items-end
           md:flex-row md:justify-between md:mb-20 md:items-center
           "
           >
-            <div className="flex 
+            <div
+              className="flex 
             flex-row gap-14
             md:flex-col md:gap-1
             "
@@ -181,7 +184,9 @@ export default function ViewVehiclePage() {
                 <strong className="text-3xl md:text-5xl">{vehicle.km}</strong>
                 <strong>km</strong>
               </p>
-              <p className="text-2xl md:text-4xl text-gray-700 italic">{vehicle.year}</p>
+              <p className="text-2xl md:text-4xl text-gray-700 italic">
+                {vehicle.year}
+              </p>
             </div>
             <div className="flex flex-col gap-1">
               <p className="flex flex-row gap-4 text-red-600 text-[50px] md:text-[60px] italic font-bold">
@@ -193,58 +198,69 @@ export default function ViewVehiclePage() {
             </div>
           </div>
 
-          <div className='grid grid-cols-3 justify-center items-center gap-5 md:gap-20 mb-20'>
-            <p className='flex flex-col text-xl'><strong className='text-xl md:text-3xl text-gray-800 underline'>Combustível</strong> {vehicle.fuel.name}</p>
-            <p className='flex flex-col text-xl'><strong className='text-xl md:text-3xl text-gray-800 underline'>Câmbio</strong> {vehicle.exchange.name}</p>
-            <p className='flex flex-col text-xl'><strong className='text-xl md:text-3xl text-gray-800 underline'>Carroceria</strong> {vehicle.bodyWork.name}</p>
+          <div className="grid grid-cols-3 justify-center items-center gap-5 md:gap-20 mb-20">
+            <p className="flex flex-col text-xl">
+              <strong className="text-xl md:text-3xl text-gray-800 underline">
+                Combustível
+              </strong>{" "}
+              {vehicle.fuel.name}
+            </p>
+            <p className="flex flex-col text-xl">
+              <strong className="text-xl md:text-3xl text-gray-800 underline">
+                Câmbio
+              </strong>{" "}
+              {vehicle.exchange.name}
+            </p>
+            <p className="flex flex-col text-xl">
+              <strong className="text-xl md:text-3xl text-gray-800 underline">
+                Carroceria
+              </strong>{" "}
+              {vehicle.bodyWork.name}
+            </p>
           </div>
 
           <div>
-
-            <Accordion variant="splitted" className='w-[100%] md:w-[80%]'>
+            <Accordion variant="splitted" className="w-[100%] md:w-[80%]">
               <AccordionItem
                 key="1"
                 aria-label="Accordion 1"
                 subtitle="Pressione"
                 title="Descrição"
               >
-
-                <p className='font-normal m-8'>{vehicle.description.description}</p>
-
+                <p className="font-normal m-8">
+                  {vehicle.description.description}
+                </p>
               </AccordionItem>
             </Accordion>
-
           </div>
         </div>
-      </div> 
+      </div>
 
-      <div className='flex mx-2 md:mx-20 justify-center mb-20'>
-
+      <div className="flex mx-2 md:mx-20 justify-center mb-20">
         <div>
           {vehicles.length > 0 ? (
             <ul className="grid grid-cols-2 md:grid-cols-4 gap-16 select-none">
-              {vehicles.slice(0, 4).map(vehicle => (
+              {vehicles.slice(0, 4).map((vehicle) => (
                 <li key={vehicle.id}>
                   <Link href={`${vehicle.id}`}>
-
                     <CardVehicle
                       imgVeihcle={vehicle.baner1}
                       logoVeihcle={vehicle.mark.banner}
                       nameVeihcle={vehicle.model}
                       kmVeihcle={vehicle.km}
                       yearVeihcle={vehicle.year}
-                      priceVeihcle={vehicle.price.toLocaleString('pt-BR')}
+                      priceVeihcle={vehicle.price.toLocaleString("pt-BR")}
                     />
-
                   </Link>
                 </li>
               ))}
             </ul>
-
           ) : (
-            <p className="text-gray-500 select-none">Buscando...</p>
+            // <p className="text-gray-500 select-none">Buscando...</p>
+            <div className="flex justify-center">
+              <Spinner size="lg" color="danger" />
+            </div>
           )}
-
         </div>
       </div>
     </div>
