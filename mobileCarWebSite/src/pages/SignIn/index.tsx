@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -15,7 +15,7 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   // const [user, setUser] = useState("admin");
   // const [password, setPassword] = useState("1");
-
+ 
   function handleLogin() {
     if (user === "" || password === "") return;
 
@@ -24,11 +24,12 @@ export default function SignIn() {
       alert("Usuário ou senha incorretos!");
     }
   }
+  
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
-
+       
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Digite seu email"
@@ -57,6 +58,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
+  },
+  image:{
+    width: 40
   },
   title: {
     fontSize: 24,
