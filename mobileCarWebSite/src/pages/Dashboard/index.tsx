@@ -1,10 +1,26 @@
 import React from "react"
-import { Text, View } from "react-native"
+import { StyleSheet, Text, View } from "react-native"
+import { useAuth } from "../../contexts/AuthContext";
+ 
+export default function Dashboard() {
+    const { signOut } = useAuth();
 
-export default function Dashboard(){ 
-    return(
-        <View>
-            <Text>Olá mundo Dashboard</Text>
+    function handleSignOut() {
+        signOut()
+    }
+
+    return (
+        <View style={styles.container}>
+            <Text>Olá mundo!</Text>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fff",
+    },
+});

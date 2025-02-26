@@ -1,71 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
-  // Image,
   StyleSheet,
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { api } from "../../services/api";
+
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function SignIn() {
-  const [email, setEmail] = useState("");
+  const { signIn } = useAuth();
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-
-  // const [logoWeb, setLogoWeb] = useState('')
-
-  // useEffect(() => {
-  //   async function fetchLogo() {
-  //     try {
-  //       const response = await api.get("/logo");
-  //       console.log(response.data);
-  //       if (response.data && response.data.length > 0) {
-  //         setLogoWeb(response.data[0].linck);  
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   fetchLogo(); 
-
-  // }, []);
+  // const [user, setUser] = useState("admin");
+  // const [password, setPassword] = useState("1");
 
   function handleLogin() {
-    if (email === "" || password === "") {
-      return;
-    }
+    if (user === "" || password === "") return;
 
-    try {
-        
-    } catch (error) {
-      console.log(error)
-    
+    const success = signIn(user, password);
+    if (!success) {
+      alert("Usuário ou senha incorretos!");
     }
-    alert("Passou");
-
-    setEmail("");
-    setPassword("");
   }
 
   return (
     <View style={styles.container}>
-      {/* {logoWeb ? (
-        <Image style={styles.logo} source={{ uri: logoWeb}} />
-      ) : (
-        <Text>Oa</Text>
-      )} */}
+      <Text style={styles.title}>Login</Text>
 
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Digite seu email"
           style={styles.input}
-          value={email}
-          onChangeText={setEmail}
+          value={user}
+          onChangeText={setUser}
         />
         <TextInput
           placeholder="Digite sua senha"
-          secureTextEntry={true}
+          secureTextEntry
           style={styles.input}
           value={password}
           onChangeText={setPassword}
@@ -83,19 +56,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fff",
   },
-  logo: {
-    marginBottom: 18,
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
   },
   inputContainer: {
-    width: "95%",
+    width: "90%",
     alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 34,
-    paddingHorizontal: 14,
   },
   input: {
-    width: "95%",
+    width: "100%",
     height: 40,
     marginBottom: 10,
     backgroundColor: "#DFE4E4",
@@ -103,7 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   button: {
-    width: "95%",
+    width: "100%",
     height: 40,
     backgroundColor: "#3fffa3",
     borderRadius: 4,
