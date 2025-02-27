@@ -1,32 +1,23 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Dashboard from '../pages/Dashboard';
-import { useAuth } from '../contexts/AuthContext';
+import Dashboard from "../pages/Dashboard";
+import Logo from "../pages/Logo";
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Dashboard: undefined;
+  Logo: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>(); // ⬅ Tipando as rotas
 
 function AppRoutes() {
-    const { signOut } = useAuth();
-
-    return (
-        <Stack.Navigator>
-            <Stack.Screen 
-                name='Dashboard' 
-                component={Dashboard} 
-                options={{
-                    headerRight: () => (
-                        <TouchableOpacity onPress={signOut} style={{ marginRight: 15 }}>
-                            <Icon name="logout" size={24} color="black" />
-                        </TouchableOpacity>
-                    ),
-                    title: 'Dashboard',
-                }}
-            />
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="Logo" component={Logo} />
+    </Stack.Navigator>
+  );
 }
 
 export default AppRoutes;

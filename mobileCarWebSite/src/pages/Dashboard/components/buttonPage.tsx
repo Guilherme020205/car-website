@@ -1,0 +1,45 @@
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+
+type RootStackParamList = {
+  Dashboard: undefined;
+  Logo: undefined;
+};
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+
+type ButtonPageProps = {
+  name: keyof RootStackParamList; // O nome da tela precisa estar na lista de rotas
+  buttonText: string; // Texto do botão
+};
+
+export default function ButtonPage({ name, buttonText }: ButtonPageProps) {
+  const navigation = useNavigation<NavigationProps>();
+
+  function handleNavigate() {
+    navigation.navigate(name); 
+  }
+
+  return (
+    <TouchableOpacity onPress={handleNavigate} style={styles.navigateButton}>
+      <Text style={styles.navigateButtonText}>{buttonText}</Text>
+    </TouchableOpacity>
+  );
+}
+
+const styles = StyleSheet.create({
+  navigateButton: {
+    width: 150,
+    alignItems: "center",
+    marginTop: 20,
+    backgroundColor: "#3fffa3",
+    padding: 10,
+    borderRadius: 5,
+  },
+  navigateButtonText: {
+    color: "#000",
+    fontSize: 15,
+  },
+});

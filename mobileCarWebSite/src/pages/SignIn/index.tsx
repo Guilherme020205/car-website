@@ -11,10 +11,10 @@ import { useAuth } from "../../contexts/AuthContext";
 
 export default function SignIn() {
   const { signIn } = useAuth();
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  // const [user, setUser] = useState("admin");
-  // const [password, setPassword] = useState("1");
+  // const [user, setUser] = useState("");
+  // const [password, setPassword] = useState("");
+  const [user, setUser] = useState("admin");
+  const [password, setPassword] = useState("1");
  
   function handleLogin() {
     if (user === "" || password === "") return;
