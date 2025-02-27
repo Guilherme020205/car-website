@@ -6,6 +6,11 @@ import { useNavigation } from "@react-navigation/native";
 type RootStackParamList = {
   Dashboard: undefined;
   Logo: undefined;
+  Banner: undefined;
+  Location: undefined;
+  Contatos: undefined;
+  Redes: undefined;
+  Veiculos: undefined;
 };
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
@@ -31,9 +36,9 @@ export default function ButtonPage({ name, buttonText }: ButtonPageProps) {
 
 const styles = StyleSheet.create({
   navigateButton: {
-    width: 150,
+    width: 300,
     alignItems: "center",
-    marginTop: 20,
+    marginBottom: 20,
     backgroundColor: "#3fffa3",
     padding: 10,
     borderRadius: 5,

@@ -21,7 +21,12 @@ export default function Dashboard() {
       </View>
 
       <View style={styles.containerOptions}>
-        <ButtonPage name="Logo" buttonText="Ir para Logo" />
+        <ButtonPage name="Logo" buttonText="Logo" />
+        <ButtonPage name="Banner" buttonText="Banner" />
+        <ButtonPage name="Location" buttonText="Location" />
+        <ButtonPage name="Contatos" buttonText="Contatos" />
+        <ButtonPage name="Redes" buttonText="Redes" />
+        <ButtonPage name="Veiculos" buttonText="Veiculos" />
       </View>
     </View>
   );
@@ -36,6 +41,7 @@ const styles = StyleSheet.create({
   },
   containerSignOut: {
     flex: 1,
+    marginTop: 50,
     marginLeft: "80%",
     flexDirection: "row",
     gap: 10,
@@ -48,11 +54,11 @@ const styles = StyleSheet.create({
   },
   containerOptions: {
     flex: 10,
-    marginTop: 10,
+    // marginTop: 80,
     marginHorizontal: 10,
     justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 50,
+    flexDirection: "column",
+    // flexWrap: "wrap",
+    gap: 10,
   },
 });
