@@ -4,10 +4,12 @@ import {
   View,
   StyleSheet,
   TextInput,
+  Image,
   TouchableOpacity,
 } from "react-native";
 
 import { useAuth } from "../../contexts/AuthContext";
+import { api } from "../../services/api";
 
 export default function SignIn() {
   const { signIn } = useAuth();
@@ -15,7 +17,7 @@ export default function SignIn() {
   // const [password, setPassword] = useState("");
   const [user, setUser] = useState("admin");
   const [password, setPassword] = useState("1");
- 
+
   function handleLogin() {
     if (user === "" || password === "") return;
 
@@ -24,12 +26,31 @@ export default function SignIn() {
       alert("Usuário ou senha incorretos!");
     }
   }
-  
+
+  const [logoWeb, setLogoWeb] = useState<{ linck: string } | null>(null);
+
+  useEffect(() => {
+    async function fetchLogo() {
+      try {
+        const response = await api.get('/logo')
+        // console.log(response.data[0].linck)
+        if (response.data && response.data.length > 0) {
+          setLogoWeb(response.data[0])
+        }
+        console.log(logoWeb?.linck)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchLogo();
+  }, []);
+
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-       
+      {/* <Text style={styles.title}>Login</Text> */}
+      <Image style={styles.image} source={logoWeb?.linck ? { uri: logoWeb.linck } : { uri: "" }} />
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Digite seu email"
@@ -59,8 +80,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
   },
-  image:{
-    width: 40
+  image: {
+    width: 300,
+    height: 70,
+    marginBottom: 50
   },
   title: {
     fontSize: 24,
