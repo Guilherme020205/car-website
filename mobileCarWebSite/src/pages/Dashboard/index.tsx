@@ -23,7 +23,7 @@ export default function Dashboard() {
       <View style={styles.containerOptions}>
         <ButtonPage name="Logo" buttonText="Logo" />
         <ButtonPage name="Banner" buttonText="Banner" />
-        <ButtonPage name="Location" buttonText="Location" />
+        <ButtonPage name="Localização" buttonText="Location" />
         <ButtonPage name="Contatos" buttonText="Contatos" />
         <ButtonPage name="Redes" buttonText="Redes" />
         <ButtonPage name="Veiculos" buttonText="Veiculos" />

@@ -37,7 +37,7 @@ export default function SignIn() {
         if (response.data && response.data.length > 0) {
           setLogoWeb(response.data[0])
         }
-        console.log(logoWeb?.linck)
+        // console.log(logoWeb?.linck)
       } catch (error) {
         console.log(error);
       }

@@ -2,16 +2,8 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-
-type RootStackParamList = {
-  Dashboard: undefined;
-  Logo: undefined;
-  Banner: undefined;
-  Location: undefined;
-  Contatos: undefined;
-  Redes: undefined;
-  Veiculos: undefined;
-};
+import { RootStackParamList} from "../../../routes/app.routes"
+ 
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 
