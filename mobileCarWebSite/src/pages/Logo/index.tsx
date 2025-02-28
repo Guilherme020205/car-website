@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Button, Image, Alert } from "react-native";
+import { View, Text, TouchableOpacity, Image, Alert, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+
 import { api } from "../../services/api";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 // Definição do componente principal
 export default function Logo() {
@@ -30,7 +32,7 @@ export default function Logo() {
         const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images, // Apenas imagens podem ser selecionadas
             allowsEditing: true, // Permite edição básica da imagem
-            aspect: [4, 4], // Define a proporção da imagem
+            aspect: [300, 70], // Define a proporção da imagem
             quality: 1, // Qualidade máxima da imagem
         });
 
@@ -71,15 +73,63 @@ export default function Logo() {
     }
 
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            {/* Exibe a logo atual se houver uma URL */}
-            {logoUrl && <Image source={{ uri: logoUrl }} style={{ width: 200, height: 200, marginBottom: 20 }} />}
-            {/* Botão para selecionar uma nova imagem */}
-            <Button title="Selecionar Imagem" onPress={pickImage} />
-            {/* Exibe a prévia da imagem selecionada */}
-            {selectedImage && <Image source={{ uri: selectedImage }} style={{ width: 100, height: 100, marginVertical: 10 }} />}
-            {/* Botão para enviar a imagem selecionada */}
-            <Button title="Enviar Imagem" onPress={uploadImage} disabled={!selectedImage} />
+        <View style={styles.container} >
+
+            {logoUrl && <Image source={{ uri: logoUrl }} style={styles.logo} />}
+
+            <View style={styles.containerPostFile}>
+                <TouchableOpacity onPress={pickImage} style={styles.buttonFile}>
+                    <Icon name="upload" size={50} color="black" />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={uploadImage} disabled={!selectedImage} style={styles.button}>
+                    <Text>Enviar Imagem</Text>
+                </TouchableOpacity> 
+                {selectedImage && <Image source={{ uri: selectedImage }} style={styles.logoNew}  />}
+            </View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fff",
+        paddingTop: 50, 
+        gap: 50
+      }, 
+      containerPostFile:{
+        flex: 1, 
+        backgroundColor: "#fff",
+      },
+      buttonFile: {
+        width: 300,
+        height: 100,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 3, 
+        borderColor: '#3fffa3', 
+    },
+      button: {
+        width: 300,
+        height: 40,
+        backgroundColor: "#3fffa3",
+        borderRadius: 4,
+        alignItems: "center",
+        justifyContent: "center",
+      },
+      
+      logo: {
+        width: 300,
+        height: 70 
+      },
+      logoNew: {
+        marginTop:10,
+        width: 300,
+        height: 70 
+      }
+})
