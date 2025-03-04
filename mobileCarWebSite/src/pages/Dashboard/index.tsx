@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useAuth } from "../../contexts/AuthContext";
 import Icon from "react-native-vector-icons/AntDesign";
 
-import ButtonPage from "./components/buttonPage";
+import ButtonPage from "../components/buttonPage";
 
 export default function Dashboard() {
   const { signOut } = useAuth();

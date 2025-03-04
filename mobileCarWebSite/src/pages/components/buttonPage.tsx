@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { RootStackParamList} from "../../../routes/app.routes"
+import { RootStackParamList} from "../../routes/app.routes"
  
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
